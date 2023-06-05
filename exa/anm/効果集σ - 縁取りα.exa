@@ -1,0 +1,10 @@
+[vo.0]
+_name=アニメーション効果
+type=0
+filter=0
+name=縁取りα@効果集σ
+track0=3.00
+track1=10.00
+track2=0.00
+track3=0.00
+param=_1=0x0;_2=[[]];_3=1;_4=0;_5=0;_0=nil;

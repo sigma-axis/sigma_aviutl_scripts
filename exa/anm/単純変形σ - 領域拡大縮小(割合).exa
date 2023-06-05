@@ -1,0 +1,11 @@
+[vo.0]
+_name=アニメーション効果
+type=0
+filter=0
+name=領域拡大縮小(割合)@単純変形σ
+track0=0.00
+track1=0.00
+track2=0.00
+track3=0.00
+check0=0
+param=_1=0;_0=nil;

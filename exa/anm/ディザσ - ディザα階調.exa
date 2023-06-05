@@ -1,0 +1,11 @@
+[vo.0]
+_name=アニメーション効果
+type=0
+filter=0
+name=ディザα階調@ディザσ
+track0=30.00
+track1=1.00
+track2=0.00
+track3=0.00
+check0=0
+param=_1=4;_2=123;_3=0;_4=0;_5=0;_6=1;_0=nil;

@@ -1,0 +1,10 @@
+[vo.0]
+_name=アニメーション効果
+type=0
+filter=0
+name=内側シャドー@効果集σ
+track0=-40.00
+track1=24.00
+track2=40.00
+track3=10.00
+param=_1=0x000000;_2=[[]];_3=1;_0=nil;
