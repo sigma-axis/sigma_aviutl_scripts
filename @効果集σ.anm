@@ -1,0 +1,202 @@
+--[[
+The MIT License (MIT)
+Copyright (C) 2023 sigma_axis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+https://mit-license.org/
+]]
+
+@四隅丸め
+--track0:左上半径,0,2000,32,1
+--track1:右上半径,0,2000,32,1
+--track2:右下半径,0,2000,32,1
+--track3:左下半径,0,2000,32,1
+--check0:半径均一,1
+--dialog:角図形/fig,_1="円";凹凸反転/chk,_2=0;半透明に配慮/chk,_3=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local r = c0 and t1;
+require"sigma_objanm_core".round_corners(t1,r or t2,r or t3,r or t4,_1,_2==1,_3==1);
+_1=nil;_2=nil;_3=nil;
+
+
+@アクリル素材
+--track0:ぼかし量,0,300,16,1
+--track1:着色強さ,0,100,20
+--track2:輝度倍率,0,200,30
+--track3:輝度中心,-100,200,50
+--check0:着色で輝度を保持,1
+--dialog:色/col,_1=0x808080;ぼかし縦横比,_2=0;ぼかし光度,_3=0;彩度(0~200%),_4=100;色相,_5=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local n = tonumber;
+require"sigma_objanm_core".acryl_material(false,t1,(n(_2) or 0)/100,_3,
+	_1,t2/100,c0, t3/100,t4/100,(n(_4) or 100)/100,_5);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@磨りガラス素材
+--track0:ぼかし量,0,200,16,1
+--track1:着色強さ,0,100,20
+--track2:輝度倍率,0,200,30
+--track3:輝度中心,-100,200,50
+--check0:着色で輝度を保持,1
+--dialog:色/col,_1=0x808080;ぼかし光度,_2=32;彩度(0~200%),_3=100;色相,_4=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".acryl_material(true,t1,0,_2,
+	_1,t2/100,c0, t3/100,t4/100,(tonumber(_3) or 100)/100,_4);
+_1=nil;_2=nil;_3=nil;_4=nil;
+
+
+@アクリル化
+--track0:ぼかし量,0,300,16,1
+--track1:着色強さ,0,100,20
+--track2:Xずれ,-2000,2000,0,1
+--track3:Yずれ,-2000,2000,0,1
+--check0:着色で輝度を保持,1
+--dialog:単色化/chk,_1=0;└色/col,_2=0x808080;ぼかし縦横比,_3=0;ぼかし光度,_4=0;輝度倍率(%),_5=30;輝度中心(%),_6=50;彩度(0~200%),_7=100;色相,_8=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local n = tonumber;
+require"sigma_objanm_core".acrylify(false,t1,(n(_3) or 0)/100,_4, _1==1 and _2 or nil,t2/100,c0,
+	(n(_5) or 30)/100,(n(_6) or 50)/100,(n(_7) or 100)/100,_8, t3,t4);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;
+
+
+@磨りガラス化
+--track0:ぼかし量,0,200,16,1
+--track1:着色強さ,0,100,20
+--track2:Xずれ,-2000,2000,0,1
+--track3:Yずれ,-2000,2000,0,1
+--check0:着色で輝度を保持,1
+--dialog:単色化/chk,_1=0;└色/col,_2=0x808080;ぼかし光度,_3=32;輝度倍率(%),_4=30;輝度中心(%),_5=50;彩度(0~200%),_6=100;色相,_7=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local n = tonumber;
+require"sigma_objanm_core".acrylify(true,t1,0,_3, _1==1 and _2 or nil,t2/100,c0,
+	(n(_4) or 30)/100,(n(_5) or 50)/100,(n(_6) or 100)/100,_7, t3,t4);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;
+
+
+@背景塗りつぶし
+--track0:透明度,0,100,0
+--track1:前透明度,0,100,0
+--check0:前景クリア,0
+--dialog:背景色/col,_1=0x808080;余白,_2="0";TRACK,_0=nil;
+local c0,t1,t2 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".fill_back(_1, 1-t1/100, _2, 1-t2/100,c0);
+_1=nil;_2=nil;
+
+
+@背景角丸矩形
+--track0:ライン幅,0,2000,2000,1
+--track1:角半径,0,2000,32,1
+--track2:透明度,0,100,0
+--track3:前透明度,0,100,0
+--check0:角丸凹凸反転,0
+--dialog:色/col,_1=0x808080;背景色/col,_2=0x808080;背景透明度,_3=100;余白,_4="0";角丸図形/fig,_5="円";└縁幅比率,_6=-1;└中心反転/chk,_7=0;└内側補外/chk,_8=1;右上半径,_9=-1;右下半径,_10=-1;左下半径,_11=-1;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".back_rectangle(_1,_2,1-(tonumber(_3)or 100)/100, t1,1-t3/100, t2,_9,_10,_11, _5,c0,_6,_7==1,_8==1, 1-t4/100,_4);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;_10=nil;_11=nil;
+
+
+@背景楕円
+--track0:ライン幅,0,2000,2000,1
+--track1:精度,1,8,4,1
+--track2:透明度,0,100,0
+--track3:前透明度,0,100,0
+--check0:内接する,1
+--dialog:色/col,_1=0x808080;背景色/col,_2=0x808080;背景透明度,_3=100;余白,_4="0";真円/chk,_5=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".back_ellipse(_1,_2,1-(tonumber(_3)or 100)/100, t1,t2,1-t3/100, 1-t4/100,_4, c0,_5==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@背景菱形
+--track0:ライン幅,0,2000,2000,1
+--track1:透明度,0,100,0
+--track2:前透明度,0,100,0
+--check0:内接する,1
+--dialog:色/col,_1=0x808080;背景色/col,_2=0x808080;背景透明度,_3=100;余白,_4="0";正方形/chk,_5=0;TRACK,_0=nil;
+local c0,t1,t2,t3 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".back_diamond(_1,_2,1-(tonumber(_3)or 100)/100, t1,1-t2/100, 1-t3/100,_4, c0,_5==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@内側シャドー
+--track0:X,-200,200,-40,1
+--track1:Y,-200,200,24,1
+--track2:濃さ,0,100,40
+--track3:拡散,0,50,10,1
+--dialog:色/col,_1=0x000000;パターン画像,_2=[[]];└α値適用/chk,_3=1;TRACK,_0=nil;
+local slib = require"sigma_lib";
+local c0,t1,t2,t3,t4 = slib.extract_trackvalues(_0);_0=nil;
+
+local file = type(_2)=="string" and _2:match'^["%s]*(.-)["%s]*$' or ""; _2=nil;
+file=#file>0 and slib.sjis_revert_unescape(file) or nil;
+
+require"sigma_objanm_core".inner_shadow(file or tonumber(_1) or 0,t3/100, t1,t2, t4, _3==1);
+_1=nil;_3=nil;
+
+@縁取りα
+--track0:サイズ,0,500,3,1
+--track1:ぼかし,0,100,10,1
+--track2:縁透明度,0,100,0
+--track3:内透明度,0,100,0
+--dialog:縁色の設定/col,_1=0x0;パターン画像,_2=[[]];└α値適用/chk,_3=1;└X位置,_4=0;└Y位置,_5=0;TRACK,_0=nil;
+local slib = require"sigma_lib";
+local c0,t1,t2,t3,t4 = slib.extract_trackvalues(_0);_0=nil;
+
+local file = type(_2)=="string" and _2:match'^["%s]*(.-)["%s]*$' or ""; _2=nil;
+file=#file>0 and slib.sjis_revert_unescape(file) or nil;
+
+require"sigma_objanm_core".alpha_border(t1,t2, 1-t3/100,1-t4/100, file or _1,_3==1,_4,_5);
+_1=nil;_3=nil;_4=nil;_5=nil;
+
+
+@内側縁取り
+--track0:サイズ,0,500,3,1
+--track1:ぼかし,0,100,10,1
+--track2:縁透明度,0,100,0
+--track3:内透明度,0,100,0
+--check0:縁を除去,0
+--dialog:縁色の設定/col,_1=0x0;パターン画像,_2=[[]];└α値適用/chk,_3=1;└X位置,_4=0;└Y位置,_5=0;縁除去で縮小/chk,_6=0;TRACK,_0=nil;
+local slib = require"sigma_lib";
+local c0,t1,t2,t3,t4 = slib.extract_trackvalues(_0);_0=nil;
+
+local file = type(_2)=="string" and _2:match'^["%s]*(.-)["%s]*$' or ""; _2=nil;
+file=#file>0 and slib.sjis_revert_unescape(file) or nil;
+
+require"sigma_objanm_core".inner_border(t1,t2, 1-t3/100,1-t4/100,
+	not c0 and (file or tonumber(_1) or 0) or nil,(c0 and (_6 or 0) or (_3 or 1))==1,_4,_5);
+_1=nil;_3=nil;_4=nil;_5=nil;_6=nil;
+
+
+@ニューモーフィズム
+--track0:幅,-100,100,30,1
+--track1:ぼかし比,0,500,50
+--track2:強さ,0,100,50
+--track3:バランス,-100,100,0
+--dialog:光色/col,_1=0xffffff;影色/col,_2=0x000000;光角度,_3=-45;TRACK,_0=nil;
+local _,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".neumorphism(t1,t2/100,t3/100,t4/100, _1,_2,_3);
+_1=nil;_2=nil;_3=nil;
+
+

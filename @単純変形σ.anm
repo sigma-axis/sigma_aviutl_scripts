@@ -1,0 +1,186 @@
+--[[
+The MIT License (MIT)
+Copyright (C) 2023 sigma_axis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+https://mit-license.org/
+]]
+
+@領域拡大縮小
+--track0:上,-2000,2000,0,1
+--track1:下,-2000,2000,0,1
+--track2:左,-2000,2000,0,1
+--track3:右,-2000,2000,0,1
+--check0:中心の位置を変更,0
+--dialog:塗りつぶし/chk,_1=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".canvas_resize(t3,t1, t4,t2, c0,_1==1);
+_1=nil;
+
+
+@領域拡大縮小(割合)
+--track0:上%,-100,100,0,0.01
+--track1:下%,-100,100,0,0.01
+--track2:左%,-100,100,0,0.01
+--track3:右%,-100,100,0,0.01
+--check0:中心の位置を変更,0
+--dialog:塗りつぶし/chk,_1=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".canvas_resize_rational(t3/100,t1/100, t4/100,t2/100, c0,_1==1);
+_1=nil;
+
+
+@領域サイズ指定
+--track0:X,-2000,2000,0,1
+--track1:Y,-2000,2000,0,1
+--track2:幅,1,2000,100,1
+--track3:高さ,1,2000,100,1
+--check0:中心の位置を変更,0
+--dialog:塗りつぶし/chk,_1=0;水平揃え,_2=0.0;幅指定無効/chk,_3=0;垂直揃え,_4=0.0;高さ指定無効/chk,_5=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local o = obj; o.setanchor("track",0,"line");
+require"sigma_objanm_core".canvas_set_size(t3,t4,
+	t1+o.cx-o.ox,t2+o.cy-o.oy,c0,_1==1, _2,_3==1, _4,_5==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@上下左右揃え
+--track0:左右%,-100,100,0,0.01
+--track1:上下%,-100,100,0,0.01
+--track2:Xずれ,-2000,2000,0
+--track3:Yずれ,-2000,2000,0
+--check0:回転中心を移動,1
+--dialog:割合倍率,_1=1.00;X相対指定/chk,_2=0;Y相対指定/chk,_3=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local a = (tonumber(_1) or 1)/100; _1=nil;
+require"sigma_objanm_core".align_center(a*t1,a*t2, t3,t4, c0,_2==1,_3==1);
+_2=nil;_3=nil;
+
+
+@回転中心
+--track0:X,-2000,2000,0
+--track1:Y,-2000,2000,0
+--track2:Z,-2000,2000,0
+--check0:回転前の座標で指定,0
+--dialog:相対座標連動/chk,_1=1;移動量で指定/chk,_2=0;TRACK,_0=nil;
+local m,r,c0,t1,t2,t3 = _1==1,_2==1,require"sigma_lib".extract_trackvalues(_0);_0=nil;_1=nil;_2=nil;
+if m and not r then
+	local o=obj;
+	if not c0 or (o.rx%360==0 and o.ry%360==0 and o.rz%360==0) then
+		if o.getoption"camera_mode"~= 0 then
+			o.setanchor("track",0,"line","xyz");
+		elseif o.z == 0 then o.setanchor("track",0,"line") end
+	end
+end
+require"sigma_objanm_core".move_center(t1,t2,t3, c0,m,not r);
+
+
+@回転中心(画面基準)
+--track0:X,-2000,2000,0
+--track1:Y,-2000,2000,0
+--track2:Z,-2000,2000,0
+--check0:回転前の座標で指定,0
+--dialog:TRACK,_0=nil;
+local c0,t1,t2,t3 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".move_center_absolute(t1,t2,t3,c0);
+
+
+@XYZ軸回転
+--track0:X軸回転,-360,360,0,0.01
+--track1:Y軸回転,-360,360,0,0.01
+--track2:Z軸回転,-360,360,0,0.01
+--track3:カメラZ,-2048,0,-1024
+--check0:描画,0
+--dialog:裏面を描画しない/chk,_1=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".rotation_euler(t1,t2,t3, t4,c0,_1==1);
+_1=nil;
+
+
+@軸指定回転
+--track0:軸X成分,-200,200,100,0.01
+--track1:軸Y成分,-200,200,0,0.01
+--track2:軸Z成分,-200,200,0,0.01
+--track3:回転角度,-360,360,0,0.01
+--check0:描画,0
+--dialog:カメラZ,_1=-1024;裏面を描画しない/chk,_2=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+obj.setanchor("track",0,"star","xyz");
+require"sigma_objanm_core".rotation_axis(t4,t1,t2,t3, _1,c0,_2==1);
+_1=nil;_2=nil;
+
+
+@傾斜
+--track0:角度,-80,80,0,0.01
+--track1:傾き%,-500,500,0
+--track2:中心,-2000,2000,0,0.01
+--track3:基準軸,-360,360,0,0.01
+--check0:回転中心基準,1
+--dialog:TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".skew(t1,t2/100, t3,t4, c0);
+
+
+@中抜きクリッピング
+--track0:X,-2000,2000,0,1
+--track1:Y,-2000,2000,0,1
+--track2:幅,0,2000,0,1
+--track3:高さ,0,2000,0,1
+--check0:中心の位置を変更,0
+--dialog:余白幅,_1=0;余白高さ,_2=0;水平揃え,_3=0.0;垂直揃え,_4=0.0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local o = obj; o.setanchor("track",0,"line");
+require"sigma_objanm_core".midrange_clipping(t1+o.cx-o.ox,t3, t2+o.cy-o.oy,t4, _1,_2, _3,_4, c0);
+_1=nil;_2=nil;
+
+
+@扇クリッピング
+--track0:中心X,-2000,2000,0,1
+--track1:中心Y,-2000,2000,0,1
+--track2:開始角,-720,720,0,0.1
+--track3:終了角,-720,720,0,0.1
+--check0:指定範囲を残す,0
+--dialog:ぼかし角度,_1=0;半透明に配慮/chk,_2=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local o = obj; o.setanchor("track",0,"line");
+if c0 then t3,t4 = t4,t3+360 end;
+require"sigma_objanm_core".pizza_cut(t3,t4,t1+o.cx-o.ox,t2+o.cy-o.oy, _1,_2==1);
+_1=nil;_2=nil;
+
+
+@透明度適用
+--track0:透明度,-100,100,0
+--check0:このフィルタ以前の透明度も適用,0
+--dialog:TRACK,_0=nil;
+local c0,t1 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".push_opacity(1-t1/100,c0);
+
+
+@透明度強制
+--track0:透明度,0,100,0
+--dialog:TRACK,_0=nil;
+local _,t1 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".force_opacity(1-t1/100);
+
+

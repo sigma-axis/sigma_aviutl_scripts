@@ -1,0 +1,66 @@
+@ディザフェードアウトイン
+--track0:重複率,0,100,0
+--track1:サイズ,1,200,3,1
+--check0:半透明を許可,0
+--dialog:背景色/col,_1=0x000000;ドット縦横比,_2=0;パターン (1～7),_3=4;└(7)のシード,_4=123;Xずれ,_5=0;Yずれ,_6=0;TRACK,_0=nil;
+local o,slib,s_dither = obj,require"sigma_lib",require"sigma_dither";
+local col,asp,c0,t1,t2 = slib.coerce_color(_1,0),slib.coerce_real(_2,0, -100,100)/100,
+	slib.extract_trackvalues(_0);_0=nil;_1=nil;_2=nil;
+local T1,T2 = o.getvalue("scenechange"),1-t1/100;
+T1,T2 = (1+T2)*T1,(1+T2)*T1-T2;
+if T1>=1 then o.effect("単色化","輝度を保持する",0,"color",col);
+elseif T1>0 then
+	s_dither.mask(_3,_4,c0, T1,false, t2,asp, _5,_6, false);
+	if T2<T1 then slib.fill_back(col) end
+end
+if 0<T2 and T2<T1 then s_dither.mask(_3,_4,c0, T2,false, t2,asp, _5,_6, false) end
+_3=nil;_4=nil;_5=nil;_6=nil;
+o.setoption("dst","frm");
+o.draw();
+
+
+@ディザワイプ(直線)
+--track0:角度,-360,360,0
+--track1:ぼかし幅,0,2000,300,1
+--dialog:ドットサイズ,_1=3;ドット縦横比,_2=0;パターン (0～7),_3=4;└(7)のシード,_4=123;α精度(0~30),_5=0;Xずれ,_6=0;Yずれ,_7=0;TRACK,_0=nil;
+local o,n,c0,t1,t2 = obj,tonumber,require"sigma_lib".extract_trackvalues(_0);_0=nil;
+local T,math,cx,cy = o.getvalue("scenechange"),math,o.getpixel();
+t1=(t1+180)%360; if t1<180 then cx=-cx end; if 90<t1 and t1<270 then cy=-cy end;
+cx,cy = cx-t2*math.sin(t1*math.pi/180),cy+t2*math.cos(t1*math.pi/180);
+o.effect("斜めクリッピング","角度",t1,"ぼかし",t2,"中心X",(0.5-T)*cx,"中心Y",(0.5-T)*cy);
+require"sigma_dither".decay_alpha(_5, false, _3,_4, _1,(n(_2)or 0)/100,true,false, _6,_7,false);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;
+o.setoption("dst","frm");
+o.draw();
+
+
+@ディザワイプ(図形)
+--track0:回転,-360,360,0
+--track1:ぼかし幅,0,2000,150,1
+--dialog:図形/fig,_1="円";大きさ補正,_2=1.00;ドットサイズ,_3=3;ドット縦横比,_4=0;パターン (0～7),_5=4;└(7)のシード,_6=123;α精度(0~30),_7=0;Xずれ,_8=0;Yずれ,_9=0;TRACK,_0=nil;
+local o,n,fig,c0,t1,t2 = obj,tonumber,tostring(_1),require"sigma_lib".extract_trackvalues(_0);_0=nil;_1=nil;
+local name_fig,id_fig = "",
+	({["背景"]=0,["円"]=1,["四角形"]=2,["三角形"]=3,["五角形"]=4,["六角形"]=5,["星型"]=6})[fig];
+if not id_fig then name_fig,id_fig = fig,0 end
+local w,h = o.getpixel();
+o.effect("マスク","マスクの反転",1,"type",id_fig,"name",name_fig,"回転",t1,"ぼかし",t2,
+	"サイズ",((n(_2)or 1)*(w^2+h^2)^0.5+t2)*o.getvalue("scenechange"));
+require"sigma_dither".decay_alpha(_7, false, _5,_6, _3,(n(_4)or 0)/100,true,false, _8,_9,false);
+_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;
+o.setoption("dst","frm");
+o.draw();
+
+
+@ディザワイプ(時計)
+--track0:初期角,-360,360,0
+--track1:ぼかし角,0,180,45,1
+--dialog:ドットサイズ,_1=3;ドット縦横比,_2=0;パターン (0～7),_3=4;└(7)のシード,_4=123;α精度(0~30),_5=0;Xずれ,_6=0;Yずれ,_7=0;TRACK,_0=nil;
+local o,n,slib = obj,tonumber,require"sigma_lib";
+local c0,t1,t2 = slib.extract_trackvalues(_0);_0=nil;
+slib.pizza_cut(t1,t1-t2+(360+2*t2)*o.getvalue("scenechange"),0,0, t2,false);
+require"sigma_dither".decay_alpha(_5, false, _3,_4, _1,(n(_2)or 0)/100,true,false, _6,_7,false);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;
+o.setoption("dst","frm");
+o.draw();
+
+

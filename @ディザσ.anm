@@ -1,0 +1,75 @@
+--[[
+The MIT License (MIT)
+Copyright (C) 2023 sigma_axis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+https://mit-license.org/
+]]
+
+@ディザマスク
+--track0:強さ,0,100,0
+--track1:サイズ,1,200,3,1
+--track2:Xずれ,-1600,1600,0,1
+--track3:Yずれ,-1600,1600,0,1
+--check0:位置調整を画面基準に,0
+--dialog:パターン (1～7),_1=4;└(7)のシード,_2=123;半透明を許可/chk,_3=0;縦横比,_4=0;パターン反転/chk,_5=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_dither".mask(_1,_2,_3==1, t1/100,_5==1, t2,(tonumber(_4) or 0)/100, t3,t4, c0);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@ディザフェード
+--track0:イン,0,10,0.50,0.01
+--track1:アウト,0,10,0.50,0.01
+--track2:サイズ,1,200,3,1
+--track3:縦横比,-100,100,0,0.01
+--check0:位置調整を画面基準に,0
+--dialog:パターン (1～7),_1=4;└(7)のシード,_2=123;Xずれ,_3=0;Yずれ,_4=0;半透明を許可/chk,_5=0;パターン反転/chk,_6=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_dither".fade(t1,t2, _1,_2,_5==1,_6==1, t3,t4/100, _3,_4,c0);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;
+
+
+@ディザ減色
+--track0:R減色,0,8,0,1
+--track1:G減色,0,8,0,1
+--track2:B減色,0,8,0,1
+--track3:サイズ,1,200,1,1
+--check0:サイズに応じて解像度を落とす,1
+--dialog:パターン (0～7),_1=4;└(7)のシード,_2=123;縦横比,_3=0;Xずれ,_4=0;Yずれ,_5=0;ずれ画面基準/chk,_6=0;縮小補間/chk,_7=1;拡大補間/chk,_8=0;半透明に配慮/chk,_9=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_dither".decay_color(t1,t2,t3, _1,_2,_9==1,
+	t4,(tonumber(_3) or 0)/100,c0, _7==1,_8==1, _4,_5,_6==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;
+
+
+@ディザα階調
+--track0:α精度,0,30,30,1
+--track1:サイズ,1,200,1,1
+--track2:Xずれ,-1600,1600,0,1
+--track3:Yずれ,-1600,1600,0,1
+--check0:色の解像度を保つ,0
+--dialog:パターン (0～7),_1=4;└(7)のシード,_2=123;縦横比,_3=0;パターン反転/chk,_4=0;ずれ画面基準/chk,_5=0;α値低解像度/chk,_6=1;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_dither".decay_alpha(t1, _4==1, _1,_2,
+	t2,(tonumber(_3) or 0)/100,_6==1,not c0, t3,t4,_5==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;
+
+

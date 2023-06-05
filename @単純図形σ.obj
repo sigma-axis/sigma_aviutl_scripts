@@ -1,0 +1,93 @@
+--[[
+The MIT License (MIT)
+Copyright (C) 2023 sigma_axis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+https://mit-license.org/
+]]
+
+@矩形
+--track0:幅,0,2000,100,1
+--track1:高さ,0,2000,100,1
+--track2:ライン幅,0,2000,2000,1
+--track3:角半径,0,2000,0,1
+--check0:角丸凹凸反転,0
+--dialog:色/col,_1=0xffffff;背景色/col,_2=0x000000;背景透明度,_3=100;水平揃え,_4=0.0;垂直揃え,_5=0.0;角丸図形/fig,_6="円";└縁幅比率,_7=-1;└中心反転/chk,_8=0;└内側補外/chk,_9=1;右上半径,_10=-1;右下半径,_11=-1;左下半径,_12=-1;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".rectangle(t1,t2,t3, _1,_2,1-(tonumber(_3)or 100)/100, t4,_10,_11,_12, _4,_5,_6,c0,_7,_8==1,_9==1);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;_10=nil;_11=nil;_12=nil;
+
+
+@楕円
+--track0:幅,0,2000,100,1
+--track1:高さ,0,2000,100,1
+--track2:ライン幅,0,2000,2000,1
+--track3:背景透明度,0,100,100
+--check0:真円,0
+--dialog:色/col,_1=0xffffff;背景色/col,_2=0x000000;水平揃え,_3=0.0;垂直揃え,_4=0.0;精度(1～8),_5=4;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".ellipse(t1,c0 and t1 or t2, t3, _1,_2,1-t4/100, _3,_4,_5);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
+
+
+@菱形
+--track0:幅,0,2000,100,1
+--track1:高さ,0,2000,100,1
+--track2:ライン幅,0,2000,2000,1
+--track3:背景透明度,0,100,100
+--check0:正方形,0
+--dialog:色/col,_1=0xffffff;背景色/col,_2=0x000000;水平揃え,_3=0.0;垂直揃え,_4=0.0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+require"sigma_objanm_core".diamond_shape(t1,c0 and t1 or t2, t3,_1,_2,1-t4/100, _3,_4);
+_1=nil;_2=nil;_3=nil;_4=nil;
+
+
+@アクリル矩形
+--track0:幅,1,2000,100,1
+--track1:高さ,1,2000,100,1
+--track2:ぼかし量,0,300,16,1
+--track3:着色強さ,0,100,20
+--check0:着色で輝度を保持,1
+--dialog:色/col,_1=0x808080;水平揃え,_2=0.0;垂直揃え,_3=0.0;ぼかし縦横比,_4=0;ぼかし光度,_5=0;輝度倍率(%),_6=30;輝度中心(%),_7=50;彩度(0~200%),_8=100;色相,_9=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local o,n = obj,tonumber;
+require"sigma_objanm_core".acryl_surface(o.x+o.ox-o.cx, o.y+o.oy-o.cy, t1,t2, _2,_3,
+	false,t3,(n(_4) or 0)/100,_5, _1,t4/100,c0,
+	(n(_6) or 100)/100,(n(_7) or 100)/100,(n(_8) or 100)/100,_9);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;
+
+
+@磨りガラス矩形
+--track0:幅,1,2000,100,1
+--track1:高さ,1,2000,100,1
+--track2:ぼかし量,0,200,16,1
+--track3:着色強さ,0,100,20
+--check0:着色で輝度を保持,1
+--dialog:色/col,_1=0x808080;水平揃え,_2=0.0;垂直揃え,_3=0.0;ぼかし光度,_4=32;輝度倍率(%),_5=30;輝度中心(%),_6=50;彩度(0~200%),_7=100;色相,_8=0;TRACK,_0=nil;
+local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
+
+local o,n = obj,tonumber;
+require"sigma_objanm_core".acryl_surface(o.x+o.ox-o.cx, o.y+o.oy-o.cy, t1,t2, _2,_3,
+	true,t3,0,_4, _1,t4/100,c0,
+	(n(_5) or 100)/100,(n(_6) or 100)/100,(n(_7) or 100)/100,_8);
+_1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;
+
+
