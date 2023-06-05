@@ -38,8 +38,3 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
-
-# docs
-assets/*
-README.md
-about_*.md
