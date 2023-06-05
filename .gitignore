@@ -39,3 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
+# docs
+assets/*
+README.md
+about_*.md
