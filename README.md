@@ -2360,3 +2360,10 @@ https://www.lua.org/
 
 -	公開．
 
+
+#	連絡・バグ報告
+
+-	GitHub: https://github.com/sigma-axis
+-	Twitter: https://twitter.com/sigma_axis
+-	nicovideo: https://www.nicovideo.jp/user/51492481
+
