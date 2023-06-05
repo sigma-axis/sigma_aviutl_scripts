@@ -39,9 +39,11 @@ Hereafter, $i$, $j$ and $k$ denote the quaternions consisting the standard basis
 of the purely imaginary part of the quaternion algebra and satisfying the following equalities:
 
 $$
+\begin{gather}
 i^2=j^2=k^2=-1;\\
-ij=k,\; jk=i,\; ki = j;\\
-ji=-k,\; kj=-i,\; ik=-j.
+ij=k, jk=i, ki = j;\\
+ji=-k, kj=-i, ik=-j.
+\end{gather}
 $$
 
 ## `a,b,c,d = quaternion.mult(a1,b1,c1,d1, a2,b2,c2,d2)`
