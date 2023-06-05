@@ -98,7 +98,7 @@ $$ (a+bi+cj+dk)(A+Bi+Cj+Dk) = (A+Bi+Cj+Dk)(a+bi+cj+dk) = 1. $$
 ## The table `rotation`
 
 This table lists useful functions related to 3-dimensional vector rotations,
-where a *rotation* is a transform represented by an element of $\mathrm{SO}(3, \R)$.
+where a *rotation* is a transform represented by an element of $\mathrm{SO}(3, \mathbb{R})$.
 
 ## `a,b,c,d = rotation.euler2quat(angleX, angleY, angleZ)`
 
