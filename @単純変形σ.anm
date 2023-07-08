@@ -23,37 +23,37 @@ SOFTWARE.
 https://mit-license.org/
 ]]
 
-@—ÌˆæŠg‘åk¬
---track0:ã,-2000,2000,0,1
---track1:‰º,-2000,2000,0,1
---track2:¶,-2000,2000,0,1
---track3:‰E,-2000,2000,0,1
---check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
---dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;TRACK,_0=nil;
+@é ˜åŸŸæ‹¡å¤§ç¸®å°
+--track0:ä¸Š,-2000,2000,0,1
+--track1:ä¸‹,-2000,2000,0,1
+--track2:å·¦,-2000,2000,0,1
+--track3:å³,-2000,2000,0,1
+--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".canvas_resize(t3,t1, t4,t2, c0,_1==1);
 _1=nil;
 
 
-@—ÌˆæŠg‘åk¬(Š„‡)
---track0:ã%,-100,100,0,0.01
---track1:‰º%,-100,100,0,0.01
---track2:¶%,-100,100,0,0.01
---track3:‰E%,-100,100,0,0.01
---check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
---dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;TRACK,_0=nil;
+@é ˜åŸŸæ‹¡å¤§ç¸®å°(å‰²åˆ)
+--track0:ä¸Š%,-100,100,0,0.01
+--track1:ä¸‹%,-100,100,0,0.01
+--track2:å·¦%,-100,100,0,0.01
+--track3:å³%,-100,100,0,0.01
+--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".canvas_resize_rational(t3/100,t1/100, t4/100,t2/100, c0,_1==1);
 _1=nil;
 
 
-@—ÌˆæƒTƒCƒYw’è
+@é ˜åŸŸã‚µã‚¤ã‚ºæŒ‡å®š
 --track0:X,-2000,2000,0,1
 --track1:Y,-2000,2000,0,1
---track2:•,1,2000,100,1
---track3:‚‚³,1,2000,100,1
---check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
---dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;…•½‘µ‚¦,_2=0.0;•w’è–³Œø/chk,_3=0;‚’¼‘µ‚¦,_4=0.0;‚‚³w’è–³Œø/chk,_5=0;TRACK,_0=nil;
+--track2:å¹…,1,2000,100,1
+--track3:é«˜ã•,1,2000,100,1
+--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;æ°´å¹³æƒãˆ,_2=0.0;å¹…æŒ‡å®šç„¡åŠ¹/chk,_3=0;å‚ç›´æƒãˆ,_4=0.0;é«˜ã•æŒ‡å®šç„¡åŠ¹/chk,_5=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 
 local o = obj; o.setanchor("track",0,"line");
@@ -62,13 +62,13 @@ require"sigma_objanm_core".canvas_set_size(t3,t4,
 _1=nil;_2=nil;_3=nil;_4=nil;_5=nil;
 
 
-@ã‰º¶‰E‘µ‚¦
---track0:¶‰E%,-100,100,0,0.01
---track1:ã‰º%,-100,100,0,0.01
---track2:X‚¸‚ê,-2000,2000,0
---track3:Y‚¸‚ê,-2000,2000,0
---check0:‰ñ“]’†S‚ğˆÚ“®,1
---dialog:Š„‡”{—¦,_1=1.00;X‘Š‘Îw’è/chk,_2=0;Y‘Š‘Îw’è/chk,_3=0;TRACK,_0=nil;
+@ä¸Šä¸‹å·¦å³æƒãˆ
+--track0:å·¦å³%,-100,100,0,0.01
+--track1:ä¸Šä¸‹%,-100,100,0,0.01
+--track2:Xãšã‚Œ,-2000,2000,0
+--track3:Yãšã‚Œ,-2000,2000,0
+--check0:å›è»¢ä¸­å¿ƒã‚’ç§»å‹•,1
+--dialog:å‰²åˆå€ç‡,_1=1.00;Xç›¸å¯¾æŒ‡å®š/chk,_2=0;Yç›¸å¯¾æŒ‡å®š/chk,_3=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 
 local a = (tonumber(_1) or 1)/100; _1=nil;
@@ -76,12 +76,12 @@ require"sigma_objanm_core".align_center(a*t1,a*t2, t3,t4, c0,_2==1,_3==1);
 _2=nil;_3=nil;
 
 
-@‰ñ“]’†S
+@å›è»¢ä¸­å¿ƒ
 --track0:X,-2000,2000,0
 --track1:Y,-2000,2000,0
 --track2:Z,-2000,2000,0
---check0:‰ñ“]‘O‚ÌÀ•W‚Åw’è,0
---dialog:‘Š‘ÎÀ•W˜A“®/chk,_1=1;ˆÚ“®—Ê‚Åw’è/chk,_2=0;TRACK,_0=nil;
+--check0:å›è»¢å‰ã®åº§æ¨™ã§æŒ‡å®š,0
+--dialog:ç›¸å¯¾åº§æ¨™é€£å‹•/chk,_1=1;ç§»å‹•é‡ã§æŒ‡å®š/chk,_2=0;TRACK,_0=nil;
 local m,r,c0,t1,t2,t3 = _1==1,_2==1,require"sigma_lib".extract_trackvalues(_0);_0=nil;_1=nil;_2=nil;
 if m and not r then
 	local o=obj;
@@ -94,59 +94,59 @@ end
 require"sigma_objanm_core".move_center(t1,t2,t3, c0,m,not r);
 
 
-@‰ñ“]’†S(‰æ–ÊŠî€)
+@å›è»¢ä¸­å¿ƒ(ç”»é¢åŸºæº–)
 --track0:X,-2000,2000,0
 --track1:Y,-2000,2000,0
 --track2:Z,-2000,2000,0
---check0:‰ñ“]‘O‚ÌÀ•W‚Åw’è,0
+--check0:å›è»¢å‰ã®åº§æ¨™ã§æŒ‡å®š,0
 --dialog:TRACK,_0=nil;
 local c0,t1,t2,t3 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".move_center_absolute(t1,t2,t3,c0);
 
 
-@XYZ²‰ñ“]
---track0:X²‰ñ“],-360,360,0,0.01
---track1:Y²‰ñ“],-360,360,0,0.01
---track2:Z²‰ñ“],-360,360,0,0.01
---track3:ƒJƒƒ‰Z,-2048,0,-1024
---check0:•`‰æ,0
---dialog:— –Ê‚ğ•`‰æ‚µ‚È‚¢/chk,_1=0;TRACK,_0=nil;
+@XYZè»¸å›è»¢
+--track0:Xè»¸å›è»¢,-360,360,0,0.01
+--track1:Yè»¸å›è»¢,-360,360,0,0.01
+--track2:Zè»¸å›è»¢,-360,360,0,0.01
+--track3:ã‚«ãƒ¡ãƒ©Z,-2048,0,-1024
+--check0:æç”»,0
+--dialog:è£é¢ã‚’æç”»ã—ãªã„/chk,_1=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".rotation_euler(t1,t2,t3, t4,c0,_1==1);
 _1=nil;
 
 
-@²w’è‰ñ“]
---track0:²X¬•ª,-200,200,100,0.01
---track1:²Y¬•ª,-200,200,0,0.01
---track2:²Z¬•ª,-200,200,0,0.01
---track3:‰ñ“]Šp“x,-360,360,0,0.01
---check0:•`‰æ,0
---dialog:ƒJƒƒ‰Z,_1=-1024;— –Ê‚ğ•`‰æ‚µ‚È‚¢/chk,_2=0;TRACK,_0=nil;
+@è»¸æŒ‡å®šå›è»¢
+--track0:è»¸Xæˆåˆ†,-200,200,100,0.01
+--track1:è»¸Yæˆåˆ†,-200,200,0,0.01
+--track2:è»¸Zæˆåˆ†,-200,200,0,0.01
+--track3:å›è»¢è§’åº¦,-360,360,0,0.01
+--check0:æç”»,0
+--dialog:ã‚«ãƒ¡ãƒ©Z,_1=-1024;è£é¢ã‚’æç”»ã—ãªã„/chk,_2=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 obj.setanchor("track",0,"star","xyz");
 require"sigma_objanm_core".rotation_axis(t4,t1,t2,t3, _1,c0,_2==1);
 _1=nil;_2=nil;
 
 
-@ŒXÎ
---track0:Šp“x,-80,80,0,0.01
---track1:ŒX‚«%,-500,500,0
---track2:’†S,-2000,2000,0,0.01
---track3:Šî€²,-360,360,0,0.01
---check0:‰ñ“]’†SŠî€,1
+@å‚¾æ–œ
+--track0:è§’åº¦,-80,80,0,0.01
+--track1:å‚¾ã%,-500,500,0
+--track2:ä¸­å¿ƒ,-2000,2000,0,0.01
+--track3:åŸºæº–è»¸,-360,360,0,0.01
+--check0:å›è»¢ä¸­å¿ƒåŸºæº–,1
 --dialog:TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".skew(t1,t2/100, t3,t4, c0);
 
 
-@’†”²‚«ƒNƒŠƒbƒsƒ“ƒO
+@ä¸­æŠœãã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
 --track0:X,-2000,2000,0,1
 --track1:Y,-2000,2000,0,1
---track2:•,0,2000,0,1
---track3:‚‚³,0,2000,0,1
---check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
---dialog:—]”’•,_1=0;—]”’‚‚³,_2=0;…•½‘µ‚¦,_3=0.0;‚’¼‘µ‚¦,_4=0.0;TRACK,_0=nil;
+--track2:å¹…,0,2000,0,1
+--track3:é«˜ã•,0,2000,0,1
+--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+--dialog:ä½™ç™½å¹…,_1=0;ä½™ç™½é«˜ã•,_2=0;æ°´å¹³æƒãˆ,_3=0.0;å‚ç›´æƒãˆ,_4=0.0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 
 local o = obj; o.setanchor("track",0,"line");
@@ -154,13 +154,13 @@ require"sigma_objanm_core".midrange_clipping(t1+o.cx-o.ox,t3, t2+o.cy-o.oy,t4, _
 _1=nil;_2=nil;
 
 
-@îƒNƒŠƒbƒsƒ“ƒO
---track0:’†SX,-2000,2000,0,1
---track1:’†SY,-2000,2000,0,1
---track2:ŠJnŠp,-720,720,0,0.1
---track3:I—¹Šp,-720,720,0,0.1
---check0:w’è”ÍˆÍ‚ğc‚·,0
---dialog:‚Ú‚©‚µŠp“x,_1=0;”¼“§–¾‚É”z—¶/chk,_2=0;TRACK,_0=nil;
+@æ‰‡ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°
+--track0:ä¸­å¿ƒX,-2000,2000,0,1
+--track1:ä¸­å¿ƒY,-2000,2000,0,1
+--track2:é–‹å§‹è§’,-720,720,0,0.1
+--track3:çµ‚äº†è§’,-720,720,0,0.1
+--check0:æŒ‡å®šç¯„å›²ã‚’æ®‹ã™,0
+--dialog:ã¼ã‹ã—è§’åº¦,_1=0;åŠé€æ˜ã«é…æ…®/chk,_2=0;TRACK,_0=nil;
 local c0,t1,t2,t3,t4 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 
 local o = obj; o.setanchor("track",0,"line");
@@ -169,16 +169,16 @@ require"sigma_objanm_core".pizza_cut(t3,t4,t1+o.cx-o.ox,t2+o.cy-o.oy, _1,_2==1);
 _1=nil;_2=nil;
 
 
-@“§–¾“x“K—p
---track0:“§–¾“x,-100,100,0
---check0:‚±‚ÌƒtƒBƒ‹ƒ^ˆÈ‘O‚Ì“§–¾“x‚à“K—p,0
+@é€æ˜åº¦é©ç”¨
+--track0:é€æ˜åº¦,-100,100,0
+--check0:ã“ã®ãƒ•ã‚£ãƒ«ã‚¿ä»¥å‰ã®é€æ˜åº¦ã‚‚é©ç”¨,0
 --dialog:TRACK,_0=nil;
 local c0,t1 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".push_opacity(1-t1/100,c0);
 
 
-@“§–¾“x‹­§
---track0:“§–¾“x,0,100,0
+@é€æ˜åº¦å¼·åˆ¶
+--track0:é€æ˜åº¦,0,100,0
 --dialog:TRACK,_0=nil;
 local _,t1 = require"sigma_lib".extract_trackvalues(_0);_0=nil;
 require"sigma_objanm_core".force_opacity(1-t1/100);

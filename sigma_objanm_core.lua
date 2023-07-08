@@ -33,7 +33,7 @@ local ffi do
 	if not c then
 		c = ffi; ffi = nil;
 		debug_print(c);
-		debug_print("ffiƒ‰ƒCƒuƒ‰ƒŠ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½DLuaJIT‚Ì“±“ü‚ğ„§‚µ‚Ü‚·D");
+		debug_print("ffiãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸï¼LuaJITã®å°å…¥ã‚’æ¨å¥¨ã—ã¾ã™ï¼");
 	end
 end
 local band, bor, lshift;
@@ -43,12 +43,12 @@ else band, bor, lshift = AND, OR, SHIFT end
 
 local function call_rectangle(w,h,l, color,back_color,back_alpha, r_tl,r_tr,r_br,r_bl,
 	align_h,align_v, corner_fig, corner_inv, corner_thickcoeff,corner_flipcenter,corner_extrapolate)
-	--track0:•,0,2000,100,1
-	--track1:‚‚³,0,2000,100,1
-	--track2:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track3:Šp”¼Œa,0,2000,0,1
-	--check0:ŠpŠÛ‰š“Ê”½“],0
-	--dialog:F/col,_1=0xffffff;”wŒiF/col,_2=0x000000;”wŒi“§–¾“x,_3=100;…•½‘µ‚¦,_4=0.0;‚’¼‘µ‚¦,_5=0.0;ŠpŠÛ}Œ`/fig,_6="‰~";„¤‰•”ä—¦,_7=-1;„¤’†S”½“]/chk,_8=0;„¤“à‘¤•âŠO/chk,_9=1;‰Eã”¼Œa,_10=-1;‰E‰º”¼Œa,_11=-1;¶‰º”¼Œa,_12=-1;TRACK,_0=nil;
+	--track0:å¹…,0,2000,100,1
+	--track1:é«˜ã•,0,2000,100,1
+	--track2:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track3:è§’åŠå¾„,0,2000,0,1
+	--check0:è§’ä¸¸å‡¹å‡¸åè»¢,0
+	--dialog:è‰²/col,_1=0xffffff;èƒŒæ™¯è‰²/col,_2=0x000000;èƒŒæ™¯é€æ˜åº¦,_3=100;æ°´å¹³æƒãˆ,_4=0.0;å‚ç›´æƒãˆ,_5=0.0;è§’ä¸¸å›³å½¢/fig,_6="å††";â””ç¸å¹…æ¯”ç‡,_7=-1;â””ä¸­å¿ƒåè»¢/chk,_8=0;â””å†…å´è£œå¤–/chk,_9=1;å³ä¸ŠåŠå¾„,_10=-1;å³ä¸‹åŠå¾„,_11=-1;å·¦ä¸‹åŠå¾„,_12=-1;TRACK,_0=nil;
 	w = slib.coerce_int(w, 100,0);
 	h = slib.coerce_int(h, 100,0);
 
@@ -68,10 +68,10 @@ local function call_rectangle(w,h,l, color,back_color,back_alpha, r_tl,r_tr,r_br
 
 	align_h = slib.coerce_real(align_h, 0);
 	align_v = slib.coerce_real(align_v, 0);
-	if type(corner_fig) ~= "string" then corner_fig = "‰~" end
+	if type(corner_fig) ~= "string" then corner_fig = "å††" end
 	corner_thickcoeff = slib.coerce_real(corner_thickcoeff,-1);
 
-	-- ƒfƒtƒHƒ‹ƒg‚È•HŒ`‚Í‚¿‚å‚Á‚Æ“Á•Êˆµ‚¢D
+	-- ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãªè±å½¢ã¯ã¡ã‚‡ã£ã¨ç‰¹åˆ¥æ‰±ã„ï¼
 	if corner_fig == "" and corner_thickcoeff < 0 and corner_extrapolate then
 		corner_flipcenter = not corner_inv;
 	end
@@ -88,15 +88,15 @@ local function ellipse(w,h,l,res,color,back_color,back_alpha,load)
 
 	local size = math.max(w,h);
 	if (w == h and back_alpha <= 0) or l >= math.min(w,h)/2 then
-		if w == h then obj.load("figure","‰~",color, res*size, res*l);
-		else obj.load("figure","‰~",color, res*size) end
+		if w == h then obj.load("figure","å††",color, res*size, res*l);
+		else obj.load("figure","å††",color, res*size) end
 		if w ~= h or res > 1 then
-			obj.effect("ƒŠƒTƒCƒY","X",w,"Y",h,"ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1);
+			obj.effect("ãƒªã‚µã‚¤ã‚º","X",w,"Y",h,"ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1);
 		end
 		if not load then obj.copybuffer("tmp","obj") end
 	else
 		local w2,h2 = w/2,h/2;
-		obj.load("figure","‰~",color,res*size);
+		obj.load("figure","å††",color,res*size);
 		obj.setoption("dst","tmp",w,h);
 		obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0);
 
@@ -104,7 +104,7 @@ local function ellipse(w,h,l,res,color,back_color,back_alpha,load)
 		obj.setoption("blend","alpha_sub");
 		obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0);
 		if back_alpha > 0 then
-			obj.effect("’PF‰»","color",back_color,"‹P“x‚ğ•Û‚·‚é",0);
+			obj.effect("å˜è‰²åŒ–","color",back_color,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
 			obj.setoption("blend","alpha_add");
 			local ww,hh = obj.getpixel();
 			obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0,
@@ -116,12 +116,12 @@ local function ellipse(w,h,l,res,color,back_color,back_alpha,load)
 	end
 end
 local function call_ellipse(w,h,l, color,back_color,back_alpha, align_h, align_v, res)
-	--track0:•,0,2000,100,1
-	--track1:‚‚³,0,2000,100,1
-	--track2:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track3:”wŒi“§–¾“x,0,100,100
-	--check0:^‰~,0
-	--dialog:F/col,_1=0xffffff;”wŒiF/col,_4=0x000000;…•½‘µ‚¦,_2=0.0;‚’¼‘µ‚¦,_3=0.0;¸“x(1`8),_5=4;TRACK,_0=nil;
+	--track0:å¹…,0,2000,100,1
+	--track1:é«˜ã•,0,2000,100,1
+	--track2:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track3:èƒŒæ™¯é€æ˜åº¦,0,100,100
+	--check0:çœŸå††,0
+	--dialog:è‰²/col,_1=0xffffff;èƒŒæ™¯è‰²/col,_4=0x000000;æ°´å¹³æƒãˆ,_2=0.0;å‚ç›´æƒãˆ,_3=0.0;ç²¾åº¦(1ã€œ8),_5=4;TRACK,_0=nil;
 	w = slib.coerce_int(w, 100,0);
 	h = slib.coerce_int(h, 100,0);
 
@@ -145,12 +145,12 @@ local function call_ellipse(w,h,l, color,back_color,back_alpha, align_h, align_v
 	obj.cy = obj.cy-h*align_v/2;
 end
 local function call_diamond_shape(w,h,l, color,back_color,back_alpha, align_h, align_v)
-	--track0:•,0,2000,100,1
-	--track1:‚‚³,0,2000,100,1
-	--track2:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track3:”wŒi“§–¾“x,0,100,100
-	--check0:³•ûŒ`,0
-	--dialog:F/col,_1=0xffffff;”wŒiF/col,_2=0x000000;…•½‘µ‚¦,_3=0.0;‚’¼‘µ‚¦,_4=0.0;TRACK,_0=nil;
+	--track0:å¹…,0,2000,100,1
+	--track1:é«˜ã•,0,2000,100,1
+	--track2:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track3:èƒŒæ™¯é€æ˜åº¦,0,100,100
+	--check0:æ­£æ–¹å½¢,0
+	--dialog:è‰²/col,_1=0xffffff;èƒŒæ™¯è‰²/col,_2=0x000000;æ°´å¹³æƒãˆ,_3=0.0;å‚ç›´æƒãˆ,_4=0.0;TRACK,_0=nil;
 	w = slib.coerce_int(w, 100,0);
 	h = slib.coerce_int(h, 100,0);
 
@@ -174,17 +174,17 @@ local function call_diamond_shape(w,h,l, color,back_color,back_alpha, align_h, a
 end
 
 local function call_round_corners(r_tl, r_tr, r_br, r_bl, corner_fig, corner_inv, precise)
-	--track0:¶ã”¼Œa,0,2000,32,1
-	--track1:‰Eã”¼Œa,0,2000,32,1
-	--track2:‰E‰º”¼Œa,0,2000,32,1
-	--track3:¶‰º”¼Œa,0,2000,32,1
-	--check0:”¼Œa‹Ïˆê,1
-	--dialog:Šp}Œ`/fig,_1="‰~";‰š“Ê”½“]/chk,_2=0;”¼“§–¾‚É”z—¶/chk,_3=0;TRACK,_0=nil;
+	--track0:å·¦ä¸ŠåŠå¾„,0,2000,32,1
+	--track1:å³ä¸ŠåŠå¾„,0,2000,32,1
+	--track2:å³ä¸‹åŠå¾„,0,2000,32,1
+	--track3:å·¦ä¸‹åŠå¾„,0,2000,32,1
+	--check0:åŠå¾„å‡ä¸€,1
+	--dialog:è§’å›³å½¢/fig,_1="å††";å‡¹å‡¸åè»¢/chk,_2=0;åŠé€æ˜ã«é…æ…®/chk,_3=0;TRACK,_0=nil;
 	r_tl = slib.coerce_int(r_tl,32,0);
 	r_tr = slib.coerce_int(r_tr,32,0);
 	r_br = slib.coerce_int(r_br,32,0);
 	r_bl = slib.coerce_int(r_bl,32,0);
-	if type(corner_fig) ~= "string" then corner_fig = "‰~" end
+	if type(corner_fig) ~= "string" then corner_fig = "å††" end
 
 	local posinfo = slib.posinfo_save();
 	if precise then
@@ -202,31 +202,31 @@ local function canvas_resize(l,t,r,b, move_pos, fill)
 	local L,T,R,B = math.min(math.max(l,1-w),0),math.min(math.max(t,1-h),0),
 		math.min(math.max(r,1-w),0),math.min(math.max(b,1-h),0);
 	if L<0 or R<0 or T<0 or B<0 then
-		obj.effect("ƒNƒŠƒbƒsƒ“ƒO", "ã",-T,"‰º",-B,"¶",-L,"‰E",-R,
-			"’†S‚ÌˆÊ’u‚ğ•ÏX",move_pos and 1 or 0);
+		obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "ä¸Š",-T,"ä¸‹",-B,"å·¦",-L,"å³",-R,
+			"ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´",move_pos and 1 or 0);
 		l,t,r,b = l-L,t-T,r-R,b-B;
 	end
 
 	L,T,R,B = math.max(l,0),math.max(t,0),math.max(r,0),math.max(b,0);
 	if L>0 or T>0 or R>0 or B>0 then
 		local cx,cy = obj.cx,obj.cy;
-		obj.effect("—ÌˆæŠg’£","ã",T,"‰º",B,"¶",L,"‰E",R, "“h‚è‚Â‚Ô‚µ",fill and 1 or 0);
+		obj.effect("é ˜åŸŸæ‹¡å¼µ","ä¸Š",T,"ä¸‹",B,"å·¦",L,"å³",R, "å¡—ã‚Šã¤ã¶ã—",fill and 1 or 0);
 		if move_pos then obj.cx,obj.cy = cx,cy end
 		l,t,r,b = l-L,t-T,r-R,b-B;
 	end
 
 	if l<0 or r<0 or t<0 or b<0 then
-		obj.effect("ƒNƒŠƒbƒsƒ“ƒO", "ã",-t,"‰º",-b,"¶",-l,"‰E",-r,
-			"’†S‚ÌˆÊ’u‚ğ•ÏX",move_pos and 1 or 0);
+		obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°", "ä¸Š",-t,"ä¸‹",-b,"å·¦",-l,"å³",-r,
+			"ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´",move_pos and 1 or 0);
 	end
 end
 local function call_canvas_resize(l,t,r,b, move_pos, fill)
-	--track0:ã,-2000,2000,0,1
-	--track1:‰º,-2000,2000,0,1
-	--track2:¶,-2000,2000,0,1
-	--track3:‰E,-2000,2000,0,1
-	--check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
-	--dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;TRACK,_0=nil;
+	--track0:ä¸Š,-2000,2000,0,1
+	--track1:ä¸‹,-2000,2000,0,1
+	--track2:å·¦,-2000,2000,0,1
+	--track3:å³,-2000,2000,0,1
+	--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+	--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;TRACK,_0=nil;
 	l = slib.coerce_int(l,0);
 	t = slib.coerce_int(t,0);
 	r = slib.coerce_int(r,0);
@@ -235,12 +235,12 @@ local function call_canvas_resize(l,t,r,b, move_pos, fill)
 end
 
 local function call_canvas_resize_rational(l,t,r,b, move_pos, fill)
-	--track0:ã(%),-100,100,0,0.01
-	--track1:‰º(%),-100,100,0,0.01
-	--track2:¶(%),-100,100,0,0.01
-	--track3:‰E(%),-100,100,0,0.01
-	--check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
-	--dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;TRACK,_0=nil;
+	--track0:ä¸Š(%),-100,100,0,0.01
+	--track1:ä¸‹(%),-100,100,0,0.01
+	--track2:å·¦(%),-100,100,0,0.01
+	--track3:å³(%),-100,100,0,0.01
+	--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+	--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;TRACK,_0=nil;
 	l = slib.coerce_real(l,0);
 	t = slib.coerce_real(t,0);
 	r = slib.coerce_real(r,0);
@@ -261,10 +261,10 @@ local function call_canvas_set_size(w,h, x,y, move_pos, fill,
 	align_h,disable_h, align_v,disable_v)
 	--track0:X,-2000,2000,0,1
 	--track1:Y,-2000,2000,0,1
-	--track2:•,1,2000,100,1
-	--track3:‚‚³,1,2000,100,1
-	--check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
-	--dialog:“h‚è‚Â‚Ô‚µ/chk,_1=0;ƒAƒ“ƒJ[XY”½“]/chk,_2=0;…•½‘µ‚¦,_3=0.0;•w’è–³Œø/chk,_4=0;‚’¼‘µ‚¦/chk,_5=0.0;‚‚³w’è–³Œø/chk,_6=0;TRACK,_0=nil;
+	--track2:å¹…,1,2000,100,1
+	--track3:é«˜ã•,1,2000,100,1
+	--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+	--dialog:å¡—ã‚Šã¤ã¶ã—/chk,_1=0;ã‚¢ãƒ³ã‚«ãƒ¼XYåè»¢/chk,_2=0;æ°´å¹³æƒãˆ,_3=0.0;å¹…æŒ‡å®šç„¡åŠ¹/chk,_4=0;å‚ç›´æƒãˆ/chk,_5=0.0;é«˜ã•æŒ‡å®šç„¡åŠ¹/chk,_6=0;TRACK,_0=nil;
 	if disable_h and disable_v then return end
 	w = slib.coerce_int(w,100,1);
 	h = slib.coerce_int(h,100,1);
@@ -275,10 +275,10 @@ local function call_canvas_set_size(w,h, x,y, move_pos, fill,
 	canvas_set_size(w,h, x,y, move_pos, fill, align_h,disable_h, align_v,disable_v);
 end
 
-local function invert_opacity() return obj.effect("”½“]","“§–¾“x”½“]",1) end
+local function invert_opacity() return obj.effect("åè»¢","é€æ˜åº¦åè»¢",1) end
 local function call_push_opacity(alpha, apply_existing)
-	--track0:“§–¾“x,-100,100,0
-	--check0:‚±‚ÌƒtƒBƒ‹ƒ^ˆÈ‘O‚Ì“§–¾“x‚à“K—p,0
+	--track0:é€æ˜åº¦,-100,100,0
+	--check0:ã“ã®ãƒ•ã‚£ãƒ«ã‚¿ä»¥å‰ã®é€æ˜åº¦ã‚‚é©ç”¨,0
 	--dialog:TRACK,_0=nil;
 	alpha = slib.coerce_real(alpha,1,0);
 
@@ -288,17 +288,17 @@ local function call_push_opacity(alpha, apply_existing)
 	slib.push_opacity(alpha);
 end
 local function call_force_opacity(alpha)
-	--track0:“§–¾“x,0,100,0
+	--track0:é€æ˜åº¦,0,100,0
 	--dialog:TRACK,_0=nil;
 	alpha = slib.coerce_real(alpha,1,0,1);
 	slib.force_opacity(alpha);
 end
 
 local function call_fill_back(color, alpha, padding, alpha_f, backonly)
-	--track0:“§–¾“x,0,100,0
-	--track1:‘O“§–¾“x,0,100,0
-	--check0:‘OŒiƒNƒŠƒA,0
-	--dialog:”wŒiF/col,_1=0x808080;—]”’,_2="0";TRACK,_0=nil;
+	--track0:é€æ˜åº¦,0,100,0
+	--track1:å‰é€æ˜åº¦,0,100,0
+	--check0:å‰æ™¯ã‚¯ãƒªã‚¢,0
+	--dialog:èƒŒæ™¯è‰²/col,_1=0x808080;ä½™ç™½,_2="0";TRACK,_0=nil;
 	color = slib.coerce_color(color, 0x808080);
 	alpha = slib.coerce_real(alpha,1,0,1);
 	local l,t,r,b = slib.parse_thickness(padding);
@@ -312,7 +312,7 @@ local function call_fill_back(color, alpha, padding, alpha_f, backonly)
 	if backonly then
 		if alpha_f < 1 then slib.push_opacity(alpha_f) end
 		invert_opacity();
-		obj.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",color);
+		obj.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",color);
 		if alpha < 1 then slib.push_opacity(alpha) end
 	else slib.fill_back(color, alpha, alpha_f) end
 end
@@ -323,46 +323,46 @@ local function acryl_material(blurtype_lens,blur_rad,blur_asp,blur_light,
 	-- apply blur
 	if blur_rad > 0 then
 		if blurtype_lens then
-			obj.effect("ƒŒƒ“ƒYƒuƒ‰[","”ÍˆÍ",blur_rad,"Œõ‚Ì‹­‚³",blur_light);
+			obj.effect("ãƒ¬ãƒ³ã‚ºãƒ–ãƒ©ãƒ¼","ç¯„å›²",blur_rad,"å…‰ã®å¼·ã•",blur_light);
 		else
-			obj.effect("‚Ú‚©‚µ","”ÍˆÍ",blur_rad,"c‰¡”ä",100*blur_asp,"Œõ‚Ì‹­‚³",blur_light,"ƒTƒCƒYŒÅ’è",1);
+			obj.effect("ã¼ã‹ã—","ç¯„å›²",blur_rad,"ç¸¦æ¨ªæ¯”",100*blur_asp,"å…‰ã®å¼·ã•",blur_light,"ã‚µã‚¤ã‚ºå›ºå®š",1);
 		end
 	end
 
 	-- apply luma/chroma adjustment
 	local luma_add = math.min(math.max(luma_std-luma_scale/2,-1-luma_scale/2),1+luma_scale/2);
-	obj.effect("F’²•â³","–¾‚é‚³",100*(1+luma_add),
-		"‹P“x",100*luma_scale,"Ê“x",100*sat_scale,"F‘Š",chroma_arg);
+	obj.effect("è‰²èª¿è£œæ­£","æ˜ã‚‹ã•",100*(1+luma_add),
+		"è¼åº¦",100*luma_scale,"å½©åº¦",100*sat_scale,"è‰²ç›¸",chroma_arg);
 	while luma_add > 1 do
 		luma_add = luma_add - 1;
-		obj.effect("F’²•â³","–¾‚é‚³",100*(1+luma_add));
+		obj.effect("è‰²èª¿è£œæ­£","æ˜ã‚‹ã•",100*(1+luma_add));
 	end
 	while luma_add < -1 do
 		luma_add = luma_add + 1;
-		obj.effect("F’²•â³","–¾‚é‚³",100*(1+luma_add));
+		obj.effect("è‰²èª¿è£œæ­£","æ˜ã‚‹ã•",100*(1+luma_add));
 	end
 
 	-- apply tint
 	if tint_int > 0 then
-		obj.effect("’PF‰»","color",tint_col,"‹­‚³",100*tint_int,"‹P“x‚ğ•Û‚·‚é",tint_keep_luma and 1 or 0);
+		obj.effect("å˜è‰²åŒ–","color",tint_col,"å¼·ã•",100*tint_int,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",tint_keep_luma and 1 or 0);
 	end
 end
 local function call_acryl_material(blurtype_lens,blur_rad,blur_asp,blur_light,
 	tint_col,tint_int,tint_keep_luma, luma_scale,luma_std,sat_scale,chroma_arg)
-	--@ƒAƒNƒŠƒ‹‘fŞ
-	--track0:‚Ú‚©‚µ—Ê,0,300,16,1
-	--track1:’…F‹­‚³,0,100,20
-	--track2:‹P“x”{—¦,0,200,30
-	--track3:‹P“x’†S,-100,200,50
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:F/col,_1=0x808080;‚Ú‚©‚µc‰¡”ä,_2=0;‚Ú‚©‚µŒõ“x,_3=0;Ê“x(0~200%),_4=100;F‘Š,_5=0;TRACK,_0=nil;
-	--@–‚èƒKƒ‰ƒX‘fŞ
-	--track0:‚Ú‚©‚µ—Ê,0,200,16,1
-	--track1:’…F‹­‚³,0,100,20
-	--track2:‹P“x”{—¦,0,200,30
-	--track3:‹P“x’†S,-100,200,50
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:F/col,_1=0x808080;‚Ú‚©‚µŒõ“x,_2=30;Ê“x(0~200%),_3=100;F‘Š,_4=0;TRACK,_0=nil;
+	--@ã‚¢ã‚¯ãƒªãƒ«ç´ æ
+	--track0:ã¼ã‹ã—é‡,0,300,16,1
+	--track1:ç€è‰²å¼·ã•,0,100,20
+	--track2:è¼åº¦å€ç‡,0,200,30
+	--track3:è¼åº¦ä¸­å¿ƒ,-100,200,50
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:è‰²/col,_1=0x808080;ã¼ã‹ã—ç¸¦æ¨ªæ¯”,_2=0;ã¼ã‹ã—å…‰åº¦,_3=0;å½©åº¦(0~200%),_4=100;è‰²ç›¸,_5=0;TRACK,_0=nil;
+	--@ç£¨ã‚Šã‚¬ãƒ©ã‚¹ç´ æ
+	--track0:ã¼ã‹ã—é‡,0,200,16,1
+	--track1:ç€è‰²å¼·ã•,0,100,20
+	--track2:è¼åº¦å€ç‡,0,200,30
+	--track3:è¼åº¦ä¸­å¿ƒ,-100,200,50
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:è‰²/col,_1=0x808080;ã¼ã‹ã—å…‰åº¦,_2=30;å½©åº¦(0~200%),_3=100;è‰²ç›¸,_4=0;TRACK,_0=nil;
 	blur_rad = slib.coerce_int(blur_rad,16, 0,blurtype_lens and 200 or 300);
 	blur_asp = slib.coerce_real(blur_asp,0,-1,1);
 	blur_light = slib.coerce_real(blur_light,blurtype_lens and 32 or 0,0,60);
@@ -392,26 +392,26 @@ local function acryl_surface(x, y, width, height, blurtype_lens,blur_rad,blur_as
 
 	-- snip off the "extra" edge
 	if blur_rad > 0 then
-		obj.effect("ƒNƒŠƒbƒsƒ“ƒO","ã",bh,"‰º",bh,"¶",bw,"‰E",bw);
+		obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸Š",bh,"ä¸‹",bh,"å·¦",bw,"å³",bw);
 	end
 end
 local function call_acryl_surface(x, y, width, height, align_h, align_v,
 	blurtype_lens,blur_rad,blur_asp,blur_light,
 	tint_col,tint_int,tint_keep_luma, luma_scale,luma_std,sat_scale,chroma_arg)
-	--@ƒAƒNƒŠƒ‹‹éŒ`
-	--track0:•,1,2000,100,1
-	--track1:‚‚³,1,2000,100,1
-	--track2:‚Ú‚©‚µ—Ê,0,300,16,1
-	--track3:’…F‹­‚³,0,100,20
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:F/col,_1=0x808080;…•½‘µ‚¦,_2=0.0;‚’¼‘µ‚¦,_3=0.0;‚Ú‚©‚µc‰¡”ä,_4=0;‚Ú‚©‚µŒõ“x,_5=0;‹P“x”{—¦(%),_6=30;‹P“x’†S(%),_7=50;Ê“x(0~200%),_8=100;F‘Š,_9=0;TRACK,_0=nil;
-	--@–‚èƒKƒ‰ƒX‹éŒ`
-	--track0:•,1,2000,100,1
-	--track1:‚‚³,1,2000,100,1
-	--track2:‚Ú‚©‚µ—Ê,0,200,16,1
-	--track3:’…F‹­‚³,0,100,20
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:F/col,_1=0x808080;…•½‘µ‚¦,_2=0.0;‚’¼‘µ‚¦,_3=0.0;‚Ú‚©‚µŒõ“x,_4=32;‹P“x”{—¦(%),_5=30;‹P“x’†S(%),_6=50;Ê“x(0~200%),_7=100;F‘Š,_8=0;TRACK,_0=nil;
+	--@ã‚¢ã‚¯ãƒªãƒ«çŸ©å½¢
+	--track0:å¹…,1,2000,100,1
+	--track1:é«˜ã•,1,2000,100,1
+	--track2:ã¼ã‹ã—é‡,0,300,16,1
+	--track3:ç€è‰²å¼·ã•,0,100,20
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:è‰²/col,_1=0x808080;æ°´å¹³æƒãˆ,_2=0.0;å‚ç›´æƒãˆ,_3=0.0;ã¼ã‹ã—ç¸¦æ¨ªæ¯”,_4=0;ã¼ã‹ã—å…‰åº¦,_5=0;è¼åº¦å€ç‡(%),_6=30;è¼åº¦ä¸­å¿ƒ(%),_7=50;å½©åº¦(0~200%),_8=100;è‰²ç›¸,_9=0;TRACK,_0=nil;
+	--@ç£¨ã‚Šã‚¬ãƒ©ã‚¹çŸ©å½¢
+	--track0:å¹…,1,2000,100,1
+	--track1:é«˜ã•,1,2000,100,1
+	--track2:ã¼ã‹ã—é‡,0,200,16,1
+	--track3:ç€è‰²å¼·ã•,0,100,20
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:è‰²/col,_1=0x808080;æ°´å¹³æƒãˆ,_2=0.0;å‚ç›´æƒãˆ,_3=0.0;ã¼ã‹ã—å…‰åº¦,_4=32;è¼åº¦å€ç‡(%),_5=30;è¼åº¦ä¸­å¿ƒ(%),_6=50;å½©åº¦(0~200%),_7=100;è‰²ç›¸,_8=0;TRACK,_0=nil;
 	width = slib.coerce_int(width,100, 1);
 	height = slib.coerce_int(height,100, 1);
 	align_h = slib.coerce_real(align_h,0);
@@ -434,20 +434,20 @@ end
 
 local function call_acrylify(blurtype_lens,blur_rad,blur_asp,blur_light, tint_col,tint_int,tint_keep_luma,
 	luma_scale,luma_std,sat_scale,chroma_arg, offset_x, offset_y)
-	--@ƒAƒNƒŠƒ‹‰»
-	--track0:‚Ú‚©‚µ—Ê,0,300,16,1
-	--track1:’…F‹­‚³,0,100,20
-	--track2:X‚¸‚ê,-2000,2000,0,1
-	--track3:Y‚¸‚ê,-2000,2000,0,1
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:’PF‰»/chk,_1=0;„¤F/col,_2=0x808080;‚Ú‚©‚µc‰¡”ä,_3=0;‚Ú‚©‚µŒõ“x,_4=0;‹P“x”{—¦(%),_5=30;‹P“x’†S(%),_6=50;Ê“x(0~200%),_7=100;F‘Š,_8=0;TRACK,_0=nil;
-	--@–‚èƒKƒ‰ƒX‰»
-	--track0:‚Ú‚©‚µ—Ê,0,200,16,1
-	--track1:’…F‹­‚³,0,100,20
-	--track2:X‚¸‚ê,-2000,2000,0,1
-	--track3:Y‚¸‚ê,-2000,2000,0,1
-	--check0:’…F‚Å‹P“x‚ğ•Û,1
-	--dialog:’PF‰»/chk,_1=0;„¤F/col,_2=0x808080;‚Ú‚©‚µŒõ“x,_3=32;‹P“x”{—¦(%),_4=30;‹P“x’†S(%),_5=50;Ê“x(0~200%),_6=100;F‘Š,_7=0;TRACK,_0=nil;
+	--@ã‚¢ã‚¯ãƒªãƒ«åŒ–
+	--track0:ã¼ã‹ã—é‡,0,300,16,1
+	--track1:ç€è‰²å¼·ã•,0,100,20
+	--track2:Xãšã‚Œ,-2000,2000,0,1
+	--track3:Yãšã‚Œ,-2000,2000,0,1
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:å˜è‰²åŒ–/chk,_1=0;â””è‰²/col,_2=0x808080;ã¼ã‹ã—ç¸¦æ¨ªæ¯”,_3=0;ã¼ã‹ã—å…‰åº¦,_4=0;è¼åº¦å€ç‡(%),_5=30;è¼åº¦ä¸­å¿ƒ(%),_6=50;å½©åº¦(0~200%),_7=100;è‰²ç›¸,_8=0;TRACK,_0=nil;
+	--@ç£¨ã‚Šã‚¬ãƒ©ã‚¹åŒ–
+	--track0:ã¼ã‹ã—é‡,0,200,16,1
+	--track1:ç€è‰²å¼·ã•,0,100,20
+	--track2:Xãšã‚Œ,-2000,2000,0,1
+	--track3:Yãšã‚Œ,-2000,2000,0,1
+	--check0:ç€è‰²ã§è¼åº¦ã‚’ä¿æŒ,1
+	--dialog:å˜è‰²åŒ–/chk,_1=0;â””è‰²/col,_2=0x808080;ã¼ã‹ã—å…‰åº¦,_3=32;è¼åº¦å€ç‡(%),_4=30;è¼åº¦ä¸­å¿ƒ(%),_5=50;å½©åº¦(0~200%),_6=100;è‰²ç›¸,_7=0;TRACK,_0=nil;
 	blur_rad = slib.coerce_int(blur_rad,16, 0,blurtype_lens and 200 or 300);
 	blur_asp = slib.coerce_real(blur_asp,0,-1,1);
 	blur_light = slib.coerce_real(blur_light,blurtype_lens and 32 or 0,0,60);
@@ -497,7 +497,7 @@ local function place_back_image(pad_l, pad_t, pad_r, pad_b, alpha_b, loaded, alp
 		if not loaded then obj.copybuffer("obj","tmp"); loaded = true end
 		local L,T,R,B = math.ceil(math.max(-pad_l,0)),math.ceil(math.max(-pad_t,0)),
 			math.ceil(math.max(-pad_r,0)),math.ceil(math.max(-pad_b,0));
-		obj.effect("—ÌˆæŠg’£","ã",T,"‰º",B,"¶",L,"‰E",R);
+		obj.effect("é ˜åŸŸæ‹¡å¼µ","ä¸Š",T,"ä¸‹",B,"å·¦",L,"å³",R);
 		dcx,dcy = dcx+(L-R)/2,dcy+(T-B)/2;
 	end
 	if alpha_b < 1 then
@@ -517,12 +517,12 @@ end
 
 local function call_back_rectangle(color,back_color,back_alpha,thick,alpha, r_tl, r_tr, r_br, r_bl,
 	corner_fig,corner_inv,corner_thickcoeff,corner_flipcenter,corner_extrapolate, alpha_f, padding)
-	--track0:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track1:Šp”¼Œa,0,2000,32,1
-	--track2:“§–¾“x,0,100,0
-	--track3:‘O“§–¾“x,0,100,0
-	--check0:ŠpŠÛ‰š“Ê”½“],0
-	--dialog:F/col,_1=0x808080;”wŒiF/col,_2=0x808080;”wŒi“§–¾“x,_3=100;—]”’,_4="0";ŠpŠÛ}Œ`/fig,_5="‰~";„¤‰•”ä—¦,_6=-1;„¤’†S”½“]/chk,_7=0;„¤“à‘¤•âŠO/chk,_8=1;‰Eã”¼Œa,_9=-1;‰E‰º”¼Œa,_10=-1;¶‰º”¼Œa,_11=-1;TRACK,_0=nil;
+	--track0:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track1:è§’åŠå¾„,0,2000,32,1
+	--track2:é€æ˜åº¦,0,100,0
+	--track3:å‰é€æ˜åº¦,0,100,0
+	--check0:è§’ä¸¸å‡¹å‡¸åè»¢,0
+	--dialog:è‰²/col,_1=0x808080;èƒŒæ™¯è‰²/col,_2=0x808080;èƒŒæ™¯é€æ˜åº¦,_3=100;ä½™ç™½,_4="0";è§’ä¸¸å›³å½¢/fig,_5="å††";â””ç¸å¹…æ¯”ç‡,_6=-1;â””ä¸­å¿ƒåè»¢/chk,_7=0;â””å†…å´è£œå¤–/chk,_8=1;å³ä¸ŠåŠå¾„,_9=-1;å³ä¸‹åŠå¾„,_10=-1;å·¦ä¸‹åŠå¾„,_11=-1;TRACK,_0=nil;
 	color = slib.coerce_color(color,0x808080);
 	back_color = slib.coerce_color(back_color, 0x808080);
 	back_alpha = slib.coerce_real(back_alpha,0, 0,1);
@@ -532,10 +532,10 @@ local function call_back_rectangle(color,back_color,back_alpha,thick,alpha, r_tl
 	r_tr = slib.coerce_int(r_tr, -1,-1); if r_tr < 0 then r_tr = r_tl end
 	r_br = slib.coerce_int(r_br, -1,-1); if r_br < 0 then r_br = r_tl end
 	r_bl = slib.coerce_int(r_bl, -1,-1); if r_bl < 0 then r_bl = r_tl end
-	if type(corner_fig) ~= "string" then corner_fig = "‰~" end
+	if type(corner_fig) ~= "string" then corner_fig = "å††" end
 	corner_thickcoeff = slib.coerce_real(corner_thickcoeff,-1);
 
-	-- ƒfƒtƒHƒ‹ƒg‚È•HŒ`‚Í‚¿‚å‚Á‚Æ“Á•Êˆµ‚¢D
+	-- ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãªè±å½¢ã¯ã¡ã‚‡ã£ã¨ç‰¹åˆ¥æ‰±ã„ï¼
 	if corner_fig == "" and corner_thickcoeff < 0 and corner_extrapolate then
 		corner_flipcenter = not corner_inv;
 	end
@@ -564,12 +564,12 @@ local function call_back_rectangle(color,back_color,back_alpha,thick,alpha, r_tl
 end
 
 local function call_back_ellipse(color,back_color,back_alpha, thick,res,alpha, alpha_f, padding, tangent,circle)
-	--track0:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track1:¸“x,1,8,4,1
-	--track2:“§–¾“x,0,100,0
-	--track3:‘O“§–¾“x,0,100,0
-	--check0:“àÚ‚·‚é,1
-	--dialog:F/col,_1=0x808080;”wŒiF/col,_2=0x808080;”wŒi“§–¾“x,_3=100;—]”’,_4="0";^‰~/chk,_5=0;TRACK,_0=nil;
+	--track0:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track1:ç²¾åº¦,1,8,4,1
+	--track2:é€æ˜åº¦,0,100,0
+	--track3:å‰é€æ˜åº¦,0,100,0
+	--check0:å†…æ¥ã™ã‚‹,1
+	--dialog:è‰²/col,_1=0x808080;èƒŒæ™¯è‰²/col,_2=0x808080;èƒŒæ™¯é€æ˜åº¦,_3=100;ä½™ç™½,_4="0";çœŸå††/chk,_5=0;TRACK,_0=nil;
 	color = slib.coerce_color(color,0x808080);
 	back_color = slib.coerce_color(back_color, 0x808080);
 	back_alpha = slib.coerce_real(back_alpha,0, 0,1);
@@ -609,11 +609,11 @@ local function call_back_ellipse(color,back_color,back_alpha, thick,res,alpha, a
 	obj.cx, obj.cy = obj.cx+dcx, obj.cy+dcy;
 end
 local function call_back_diamond(color,back_color,back_alpha, thick,alpha, alpha_f, padding, tangent,square)
-	--track0:ƒ‰ƒCƒ“•,0,2000,2000,1
-	--track1:“§–¾“x,0,100,0
-	--track2:‘O“§–¾“x,0,100,0
-	--check0:“àÚ‚·‚é,1
-	--dialog:F/col,_1=0x808080;”wŒiF/col,_2=0x808080;”wŒi“§–¾“x,_3=100;—]”’,_4="0";³•ûŒ`/chk,_5=0;TRACK,_0=nil;
+	--track0:ãƒ©ã‚¤ãƒ³å¹…,0,2000,2000,1
+	--track1:é€æ˜åº¦,0,100,0
+	--track2:å‰é€æ˜åº¦,0,100,0
+	--check0:å†…æ¥ã™ã‚‹,1
+	--dialog:è‰²/col,_1=0x808080;èƒŒæ™¯è‰²/col,_2=0x808080;èƒŒæ™¯é€æ˜åº¦,_3=100;ä½™ç™½,_4="0";æ­£æ–¹å½¢/chk,_5=0;TRACK,_0=nil;
 	color = slib.coerce_color(color,0x808080);
 	back_color = slib.coerce_color(back_color, 0x808080);
 	back_alpha = slib.coerce_real(back_alpha,0, 0,1);
@@ -651,12 +651,12 @@ end
 
 local function call_align_center(align_h, align_v, offset_x, offset_y,
 	move_center, relative_x,relative_y)
-	--track0:¶‰E%,-100,100,0,0.01
-	--track1:ã‰º%,-100,100,0,0.01
-	--track2:X‚¸‚ê,-2000,2000,0
-	--track3:Y‚¸‚ê,-2000,2000,0
-	--check0:‰ñ“]’†S‚ğˆÚ“®,1
-	--dialog:Š„‡”{—¦,_1=1.00;X‘Š‘Îw’è/chk,_2=0;Y‘Š‘Îw’è/chk,_3=0;TRACK,_0=nil;
+	--track0:å·¦å³%,-100,100,0,0.01
+	--track1:ä¸Šä¸‹%,-100,100,0,0.01
+	--track2:Xãšã‚Œ,-2000,2000,0
+	--track3:Yãšã‚Œ,-2000,2000,0
+	--check0:å›è»¢ä¸­å¿ƒã‚’ç§»å‹•,1
+	--dialog:å‰²åˆå€ç‡,_1=1.00;Xç›¸å¯¾æŒ‡å®š/chk,_2=0;Yç›¸å¯¾æŒ‡å®š/chk,_3=0;TRACK,_0=nil;
 	align_h = slib.coerce_real(align_h,0);
 	align_v = slib.coerce_real(align_v,0);
 	offset_x = slib.coerce_real(offset_x,0);
@@ -694,8 +694,8 @@ local function call_move_center(cx,cy,cz,pos_before_rot,move_relpos,absolute)
 	--track0:X,-2000,2000,0
 	--track1:Y,-2000,2000,0
 	--track2:Z,-2000,2000,0
-	--check0:‰ñ“]‘O‚ÌÀ•W‚Åw’è,0
-	--dialog:‘Š‘ÎÀ•W˜A“®/chk,_1=1;ˆÚ“®—Ê‚Åw’è/chk,_2=0;TRACK,_0=nil;
+	--check0:å›è»¢å‰ã®åº§æ¨™ã§æŒ‡å®š,0
+	--dialog:ç›¸å¯¾åº§æ¨™é€£å‹•/chk,_1=1;ç§»å‹•é‡ã§æŒ‡å®š/chk,_2=0;TRACK,_0=nil;
 	cx = slib.coerce_real(cx,0);
 	cy = slib.coerce_real(cy,0);
 	cz = slib.coerce_real(cz,0);
@@ -705,7 +705,7 @@ local function call_move_center_absolute(cx,cy,cz,pos_before_rot)
 	--track0:X,-2000,2000,0
 	--track1:Y,-2000,2000,0
 	--track2:Z,-2000,2000,0
-	--check0:‰ñ“]‘O‚ÌÀ•W‚Åw’è,0
+	--check0:å›è»¢å‰ã®åº§æ¨™ã§æŒ‡å®š,0
 	--dialog:TRACK,_0=nil;
 	cx = slib.coerce_real(cx,0);
 	cy = slib.coerce_real(cy,0);
@@ -739,12 +739,12 @@ local function rotate_draw_quat(camera_z, draw, culling, a,b,c,d)
 	end
 end
 local function call_rotation_euler(rx,ry,rz, camera_z, draw, culling)
-	--track0:X²‰ñ“],-360,360,0,0.01
-	--track1:Y²‰ñ“],-360,360,0,0.01
-	--track2:Z²‰ñ“],-360,360,0,0.01
-	--track3:ƒJƒƒ‰Z,-2048,0,-1024
-	--check0:•`‰æ,0
-	--dialog:— –Ê‚ğ•`‰æ‚µ‚È‚¢/chk,_1=0;TRACK,_0=nil;
+	--track0:Xè»¸å›è»¢,-360,360,0,0.01
+	--track1:Yè»¸å›è»¢,-360,360,0,0.01
+	--track2:Zè»¸å›è»¢,-360,360,0,0.01
+	--track3:ã‚«ãƒ¡ãƒ©Z,-2048,0,-1024
+	--check0:æç”»,0
+	--dialog:è£é¢ã‚’æç”»ã—ãªã„/chk,_1=0;TRACK,_0=nil;
 	rx = slib.coerce_real(rx,0);
 	ry = slib.coerce_real(ry,0);
 	rz = slib.coerce_real(rz,0);
@@ -754,12 +754,12 @@ local function call_rotation_euler(rx,ry,rz, camera_z, draw, culling)
 		srot.rotation.euler2quat(deg2rad*rx,deg2rad*ry,deg2rad*rz));
 end
 local function call_rotation_axis(angle, axisX,axisY,axisZ, camera_z, draw, culling)
-	--track0:²X¬•ª,-200,200,100,0.01
-	--track1:²Y¬•ª,-200,200,0,0.01
-	--track2:²Z¬•ª,-200,200,0,0.01
-	--track3:‰ñ“]Šp“x,-360,360,0,0.01
-	--check0:•`‰æ,0
-	--dialog:ƒJƒƒ‰Z,_1=-1024;— –Ê‚ğ•`‰æ‚µ‚È‚¢/chk,_2=0;TRACK,_0=nil;
+	--track0:è»¸Xæˆåˆ†,-200,200,100,0.01
+	--track1:è»¸Yæˆåˆ†,-200,200,0,0.01
+	--track2:è»¸Zæˆåˆ†,-200,200,0,0.01
+	--track3:å›è»¢è§’åº¦,-360,360,0,0.01
+	--check0:æç”»,0
+	--dialog:ã‚«ãƒ¡ãƒ©Z,_1=-1024;è£é¢ã‚’æç”»ã—ãªã„/chk,_2=0;TRACK,_0=nil;
 	angle = slib.coerce_real(angle,0);
 	axisX = slib.coerce_real(axisX,100);
 	axisY = slib.coerce_real(axisY,0);
@@ -806,11 +806,11 @@ local function skew(slope, offset,direction, from_center)
 	obj.oy, obj.cy = obj.oy+pts[10]-obj.cy, pts[10]-bboy;
 end
 local function call_skew(angle,slope, offset,direction, from_center)
-	--track0:Šp“x,-80,80,0,0.01
-	--track1:ŒX‚«%,-500,500,0
-	--track2:’†S,-2000,2000,0,0.01
-	--track3:Šî€²,-360,360,0,0.01
-	--check0:‰ñ“]’†SŠî€,1
+	--track0:è§’åº¦,-80,80,0,0.01
+	--track1:å‚¾ã%,-500,500,0
+	--track2:ä¸­å¿ƒ,-2000,2000,0,0.01
+	--track3:åŸºæº–è»¸,-360,360,0,0.01
+	--check0:å›è»¢ä¸­å¿ƒåŸºæº–,1
 	--dialog:TRACK,_0=nil;
 	angle = slib.coerce_real(angle,0,-89,89); -- up to 89 deg, despite of the limit of track0
 	slope = slib.coerce_real(slope,0,-40,40); -- up to 4000%, despite of the limit of track1
@@ -837,13 +837,13 @@ local midrange_clipping_per_axis do
 	end
 	local function set_gap(sz1,sz2, rg_lo,rg_hi, gap, horiz)
 		if rg_hi <= 0 then
-			if gap > 0 then obj.effect("—ÌˆæŠg’£",horiz and "¶" or "ã",gap) end
+			if gap > 0 then obj.effect("é ˜åŸŸæ‹¡å¼µ",horiz and "å·¦" or "ä¸Š",gap) end
 			return rg_hi-rg_lo;
 		elseif rg_lo <= 0 then
 			if rg_hi >= sz1 then return nil end
-			local lbl = horiz and "¶" or "ã";
-			obj.effect("ƒNƒŠƒbƒsƒ“ƒO",lbl,rg_hi);
-			if gap > 0 then obj.effect("—ÌˆæŠg’£",lbl,gap) end
+			local lbl = horiz and "å·¦" or "ä¸Š";
+			obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°",lbl,rg_hi);
+			if gap > 0 then obj.effect("é ˜åŸŸæ‹¡å¼µ",lbl,gap) end
 			return -rg_lo;
 		elseif rg_hi <= sz1 then
 			(horiz and set_gap_H or set_gap_V)(
@@ -851,34 +851,34 @@ local midrange_clipping_per_axis do
 			obj.copybuffer("obj","tmp");
 			return 0;
 		elseif rg_lo < sz1 then
-			local lbl = horiz and "‰E" or "‰º";
-			obj.effect("ƒNƒŠƒbƒsƒ“ƒO",lbl,sz1-rg_lo);
-			if gap > 0 then obj.effect("—ÌˆæŠg’£",lbl,gap) end
+			local lbl = horiz and "å³" or "ä¸‹";
+			obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°",lbl,sz1-rg_lo);
+			if gap > 0 then obj.effect("é ˜åŸŸæ‹¡å¼µ",lbl,gap) end
 			return sz1-rg_hi;
 		else
-			if gap > 0 then obj.effect("—ÌˆæŠg’£",horiz and "‰E" or "‰º",gap) end
+			if gap > 0 then obj.effect("é ˜åŸŸæ‹¡å¼µ",horiz and "å³" or "ä¸‹",gap) end
 			return rg_lo-rg_hi;
 		end
 	end
 
 	local function configure_grad(gap,len, ...)
 		-- this turned out to be a very delicate and complicated adjustment,
-		-- to hide "dips" or "lumps" of alpha values produced by "Î‚ßƒNƒŠƒbƒsƒ“ƒO".
+		-- to hide "dips" or "lumps" of alpha values produced by "æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°".
 		if len == 0 then gap,len = gap-2,1;
 		elseif len < 2 or len%2 == 0 then gap = gap-1;
 		else len = len-1 end
 
 		if gap > 0 then
-			obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","‚Ú‚©‚µ",gap,"•",-len, ...);
+			obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ã¼ã‹ã—",gap,"å¹…",-len, ...);
 			obj.setoption("blend","alpha_add");
 		else obj.setoption("blend","alpha_max") end
 	end
 	local function set_grad_H(gap, w,h, l,r, W)
-		configure_grad(gap,r-l, "’†SX",math.floor((l+r-w)/2),"Šp“x",90);
+		configure_grad(gap,r-l, "ä¸­å¿ƒX",math.floor((l+r-w)/2),"è§’åº¦",90);
 		set_gap_H(w,h, l,r, W);
 	end
 	local function set_grad_V(gap, h,w, t,b, H)
-		configure_grad(gap,b-t, "’†SY",math.floor((t+b-h)/2));
+		configure_grad(gap,b-t, "ä¸­å¿ƒY",math.floor((t+b-h)/2));
 		set_gap_V(h,w, t,b, H);
 	end
 	local function set_grad(sz1,sz2, rg_lo,rg_hi, gap, horiz)
@@ -886,7 +886,7 @@ local midrange_clipping_per_axis do
 		if rg_hi <= 0 then return rg_hi-rg_lo+gap;
 		elseif rg_lo <= 0 then
 			if rg_hi >= sz1 then return nil end
-			obj.effect("ƒNƒŠƒbƒsƒ“ƒO",horiz and "¶" or "ã",rg_hi);
+			obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°",horiz and "å·¦" or "ä¸Š",rg_hi);
 			return -rg_lo+gap;
 		elseif rg_hi <= sz1 then
 			local gap2 = math.min(rg_lo,sz1-rg_hi,gap);
@@ -903,7 +903,7 @@ local midrange_clipping_per_axis do
 			end
 			return delta_c1-delta_c2, gap-gap2;
 		elseif rg_lo < sz1 then
-			obj.effect("ƒNƒŠƒbƒsƒ“ƒO",horiz and "‰E" or "‰º",sz1-rg_lo);
+			obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°",horiz and "å³" or "ä¸‹",sz1-rg_lo);
 			return -(rg_hi-sz1+gap);
 		else return -(rg_hi-rg_lo+gap) end
 	end
@@ -932,10 +932,10 @@ end
 local function call_midrange_clipping(x,width,y,height, gap_w,gap_h, align_h,align_v, move_pos)
 	--track0:X,-2000,2000,0,1
 	--track1:Y,-2000,2000,0,1
-	--track2:•,0,2000,0,1
-	--track3:‚‚³,0,2000,0,1
-	--check0:’†S‚ÌˆÊ’u‚ğ•ÏX,0
-	--dialog:—]”’•,_1=0;—]”’‚‚³,_2=0;…•½‘µ‚¦,_3=0.0;‚’¼‘µ‚¦,_4=0.0;TRACK,_=nil;
+	--track2:å¹…,0,2000,0,1
+	--track3:é«˜ã•,0,2000,0,1
+	--check0:ä¸­å¿ƒã®ä½ç½®ã‚’å¤‰æ›´,0
+	--dialog:ä½™ç™½å¹…,_1=0;ä½™ç™½é«˜ã•,_2=0;æ°´å¹³æƒãˆ,_3=0.0;å‚ç›´æƒãˆ,_4=0.0;TRACK,_=nil;
 	x = slib.coerce_int(x,0);
 	width = slib.coerce_int(width,0,0);
 	gap_w = slib.coerce_int(gap_w,0);
@@ -954,12 +954,12 @@ local function call_midrange_clipping(x,width,y,height, gap_w,gap_h, align_h,ali
 end
 
 local function call_pizza_cut(a_from, a_to, cx,cy, blur, precise)
-	--track0:’†SX,-2000,2000,0,1
-	--track1:’†SY,-2000,2000,0,1
-	--track2:ŠJnŠp,-720,720,0,0.01
-	--track3:I—¹Šp,-720,720,0,0.01
-	--check0:w’è”ÍˆÍ‚ğc‚·,0
-	--dialog:‚Ú‚©‚µŠp“x,_1=0;”¼“§–¾‚É”z—¶/chk,_2=0;TRACK,_0=nil;
+	--track0:ä¸­å¿ƒX,-2000,2000,0,1
+	--track1:ä¸­å¿ƒY,-2000,2000,0,1
+	--track2:é–‹å§‹è§’,-720,720,0,0.01
+	--track3:çµ‚äº†è§’,-720,720,0,0.01
+	--check0:æŒ‡å®šç¯„å›²ã‚’æ®‹ã™,0
+	--dialog:ã¼ã‹ã—è§’åº¦,_1=0;åŠé€æ˜ã«é…æ…®/chk,_2=0;TRACK,_0=nil;
 	a_from = slib.coerce_real(a_from, 0);
 	a_to = slib.coerce_real(a_to, 0);
 	cx = slib.coerce_int(cx,0);
@@ -970,14 +970,14 @@ local function call_pizza_cut(a_from, a_to, cx,cy, blur, precise)
 end
 
 local function apply_file_pattern(file,offset_x,offset_y,handle_alpha,cachename)
-	obj.effect("‰æ‘œƒtƒ@ƒCƒ‹‡¬","ƒ‹[ƒv‰æ‘œ",1, "mode",2, "file",file,
+	obj.effect("ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ","ãƒ«ãƒ¼ãƒ—ç”»åƒ",1, "mode",2, "file",file,
 		"X",offset_x,"Y",offset_y);
 	if handle_alpha then
 		if cachename then obj.copybuffer(cachename,"tmp") end
 		obj.copybuffer("tmp","obj");
 
 		invert_opacity();
-		obj.effect("‰æ‘œƒtƒ@ƒCƒ‹‡¬","ƒ‹[ƒv‰æ‘œ",1, "file",file,
+		obj.effect("ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«åˆæˆ","ãƒ«ãƒ¼ãƒ—ç”»åƒ",1, "file",file,
 			"X",offset_x,"Y",offset_y);
 		invert_opacity();
 		obj.setoption("blend","alpha_sub");
@@ -997,7 +997,7 @@ local function inner_shadow(file,color,alpha,offset_x,offset_y,radius,handle_alp
 		local l,r,u,d = radius+offset_x,radius-offset_x,radius+offset_y,radius-offset_y;
 		l,r,u,d = math.max(0,l),math.max(0,r),math.max(0,u),math.max(0,d);
 		dx,dy = (l-r)/2,(u-d)/2; im_x,im_y = l,u;
-		obj.effect("—ÌˆæŠg’£","¶",l,"‰E",r,"ã",u,"‰º",d);
+		obj.effect("é ˜åŸŸæ‹¡å¼µ","å·¦",l,"å³",r,"ä¸Š",u,"ä¸‹",d);
 	end
 	invert_opacity();
 	obj.copybuffer("cache:obj","obj");
@@ -1005,8 +1005,8 @@ local function inner_shadow(file,color,alpha,offset_x,offset_y,radius,handle_alp
 	obj.draw(-dx,-dy);
 	obj.setoption("blend",0);
 
-	obj.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",color or 0); -- in case the file doesn't exist
-	if radius>0 then obj.effect("‚Ú‚©‚µ","”ÍˆÍ",radius) end;
+	obj.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",color or 0); -- in case the file doesn't exist
+	if radius>0 then obj.effect("ã¼ã‹ã—","ç¯„å›²",radius) end;
 	if file then
 		apply_file_pattern(file, im_x-offset_x+radius, im_y-offset_y+radius,
 			handle_alpha, "cache:tmp");
@@ -1025,9 +1025,9 @@ end
 local function call_inner_shadow(file_or_color,alpha, offset_x,offset_y, radius, handle_alpha)
 	--track0:X,-200,200,-40,1
 	--track1:Y,-200,200,24,1
-	--track2:”Z‚³,0,100,40
-	--track3:ŠgU,0,50,10,1
-	--dialog:F/col,_1=0x000000;ƒpƒ^[ƒ“‰æ‘œ,_2=[[]];„¤ƒ¿’l“K—p/chk,_3=1;TRACK,_0=nil;
+	--track2:æ¿ƒã•,0,100,40
+	--track3:æ‹¡æ•£,0,50,10,1
+	--dialog:è‰²/col,_1=0x000000;ãƒ‘ã‚¿ãƒ¼ãƒ³ç”»åƒ,_2=[[]];â””Î±å€¤é©ç”¨/chk,_3=1;TRACK,_0=nil;
 	local file,color;
 	if type(file_or_color) == "string" then file = file_or_color;
 	else color = slib.coerce_color(file_or_color,0) end
@@ -1048,13 +1048,13 @@ local function alpha_border(size, blur, border_alpha,inner_alpha, file,handle_al
 		obj.setoption("dst","tmp",w+2*size,h+2*size);
 		obj.draw();
 	end
-	obj.effect("‰æ‚è","ƒTƒCƒY",size, "‚Ú‚©‚µ",blur);
+	obj.effect("ç¸å–ã‚Š","ã‚µã‚¤ã‚º",size, "ã¼ã‹ã—",blur);
 	invert_opacity();
 	obj.setoption("blend","alpha_add");
 	obj.draw();
 	obj.copybuffer("obj","tmp");
 	invert_opacity();
-	obj.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",color or 0); -- in case the file doesn't exist.
+	obj.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",color or 0); -- in case the file doesn't exist.
 	if file then apply_file_pattern(file, size+ofs_x, size+ofs_y, handle_alpha) end
 
 	obj.copybuffer("tmp","cache:obj");
@@ -1063,11 +1063,11 @@ local function alpha_border(size, blur, border_alpha,inner_alpha, file,handle_al
 	obj.copybuffer("obj","tmp");
 end
 local function call_alpha_border(size, blur, border_alpha,inner_alpha, file_or_color, handle_alpha, offset_x,offset_y)
-	--track0:ƒTƒCƒY,0,500,3,1
-	--track1:‚Ú‚©‚µ,0,100,10,1
-	--track2:‰“§–¾“x,0,100,0
-	--track3:“à“§–¾“x,0,100,0
-	--dialog:‰F‚Ìİ’è/col,_1=0x0;ƒpƒ^[ƒ“‰æ‘œ,_2=[[]];„¤ƒ¿’l“K—p/chk,_3=1;„¤XˆÊ’u,_4=0;„¤YˆÊ’u,_5=0;TRACK,_0=nil;
+	--track0:ã‚µã‚¤ã‚º,0,500,3,1
+	--track1:ã¼ã‹ã—,0,100,10,1
+	--track2:ç¸é€æ˜åº¦,0,100,0
+	--track3:å†…é€æ˜åº¦,0,100,0
+	--dialog:ç¸è‰²ã®è¨­å®š/col,_1=0x0;ãƒ‘ã‚¿ãƒ¼ãƒ³ç”»åƒ,_2=[[]];â””Î±å€¤é©ç”¨/chk,_3=1;â””Xä½ç½®,_4=0;â””Yä½ç½®,_5=0;TRACK,_0=nil;
 	size = slib.coerce_int(size,3, 0,500);
 	inner_alpha = slib.coerce_real(inner_alpha,1, 0,1);
 	border_alpha = slib.coerce_real(border_alpha,1, 0,1);
@@ -1100,7 +1100,7 @@ local function inner_border(size, blur, border_alpha,inner_alpha, file,handle_al
 		local sz_blur = math.max(math.min(math.ceil(size*blur/50),size),1);
 		W = math.max(math.min(sz_blur, math.floor((W-w)/2)-size),0);
 		H = math.max(math.min(sz_blur, math.floor((H-h)/2)-size),0);
-		obj.effect("—ÌˆæŠg’£","ã",H,"‰º",H,"¶",W,"‰E",W);
+		obj.effect("é ˜åŸŸæ‹¡å¼µ","ä¸Š",H,"ä¸‹",H,"å·¦",W,"å³",W);
 		ofs_x = ofs_x+W; ofs_y = ofs_y+H;
 	end
 	invert_opacity();
@@ -1108,15 +1108,15 @@ local function inner_border(size, blur, border_alpha,inner_alpha, file,handle_al
 	obj.setoption("blend","alpha_add");
 	if erase then
 		obj.draw(0,0,0, 1,border_alpha*inner_alpha);
-		obj.effect("‰æ‚è","ƒTƒCƒY",size, "‚Ú‚©‚µ",blur);
+		obj.effect("ç¸å–ã‚Š","ã‚µã‚¤ã‚º",size, "ã¼ã‹ã—",blur);
 		obj.setoption("blend","alpha_sub");
 		obj.draw(0,0,0, 1,border_alpha*inner_alpha);
 		obj.setoption("blend",0);
 	else
 		obj.copybuffer("cache:obj","obj");
 		obj.draw(0,0,0, 1,inner_alpha);
-		obj.effect("‰æ‚è","ƒTƒCƒY",size, "‚Ú‚©‚µ",blur);
-		obj.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",color or 0); -- in case the file doesn't exist.
+		obj.effect("ç¸å–ã‚Š","ã‚µã‚¤ã‚º",size, "ã¼ã‹ã—",blur);
+		obj.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",color or 0); -- in case the file doesn't exist.
 		if file then apply_file_pattern(file, size+ofs_x, size+ofs_y, handle_alpha,"cache:tmp") end
 		obj.setoption("blend",0);
 		obj.draw(0,0,0, 1,border_alpha);
@@ -1134,17 +1134,17 @@ local function inner_border(size, blur, border_alpha,inner_alpha, file,handle_al
 	if erase and trim and border_alpha >= 1 then
 		local sz_blur = math.floor(size*(1-2*(blur/100)^2));
 		if sz_blur > 0 then
-			obj.effect("ƒNƒŠƒbƒsƒ“ƒO","ã",sz_blur,"‰º",sz_blur,"¶",sz_blur,"‰E",sz_blur);
+			obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸Š",sz_blur,"ä¸‹",sz_blur,"å·¦",sz_blur,"å³",sz_blur);
 		end
 	end
 end
 local function call_inner_border(size, blur, border_alpha,inner_alpha, file_or_color, trim_or_handle_alpha, offset_x,offset_y)
-	--track0:ƒTƒCƒY,0,500,3,1
-	--track1:‚Ú‚©‚µ,0,100,10,1
-	--track2:‰“§–¾“x,0,100,0
-	--track3:“à“§–¾“x,0,100,0
-	--check0:‰‚ğœ‹,0
-	--dialog:‰F‚Ìİ’è/col,_1=0x0;ƒpƒ^[ƒ“‰æ‘œ,_2=[[]];„¤ƒ¿’l“K—p/chk,_3=1;„¤XˆÊ’u,_4=0;„¤YˆÊ’u,_5=0;‰œ‹‚Åk¬/chk,_6=0;TRACK,_0=nil;
+	--track0:ã‚µã‚¤ã‚º,0,500,3,1
+	--track1:ã¼ã‹ã—,0,100,10,1
+	--track2:ç¸é€æ˜åº¦,0,100,0
+	--track3:å†…é€æ˜åº¦,0,100,0
+	--check0:ç¸ã‚’é™¤å»,0
+	--dialog:ç¸è‰²ã®è¨­å®š/col,_1=0x0;ãƒ‘ã‚¿ãƒ¼ãƒ³ç”»åƒ,_2=[[]];â””Î±å€¤é©ç”¨/chk,_3=1;â””Xä½ç½®,_4=0;â””Yä½ç½®,_5=0;ç¸é™¤å»ã§ç¸®å°/chk,_6=0;TRACK,_0=nil;
 	size = slib.coerce_int(size,3, 0,500);
 	inner_alpha = slib.coerce_real(inner_alpha,1, 0,1);
 	border_alpha = slib.coerce_real(border_alpha,1, 0,1);
@@ -1189,13 +1189,13 @@ else
 		if convex then obj.setoption("dst","tmp",obj.getpixel()) end
 
 		obj.copybuffer("cache:tmp","obj");
-		obj.effect("ƒ‹ƒ~ƒiƒ“ƒXƒL[","Šî€‹P“x",0,"‚Ú‚©‚µ",2048,"type",1);
-		obj.effect("’PF‰»","color",color_d,"‹P“x‚ğ•Û‚·‚é",0);
+		obj.effect("ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼","åŸºæº–è¼åº¦",0,"ã¼ã‹ã—",2048,"type",1);
+		obj.effect("å˜è‰²åŒ–","color",color_d,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
 		obj.draw(0,0,0,1,alpha_d);
 
 		obj.copybuffer("obj","cache:tmp");
-		obj.effect("ƒ‹ƒ~ƒiƒ“ƒXƒL[","Šî€‹P“x",4096,"‚Ú‚©‚µ",2048,"type",0);
-		obj.effect("’PF‰»","color",color_l,"‹P“x‚ğ•Û‚·‚é",0);
+		obj.effect("ãƒ«ãƒŸãƒŠãƒ³ã‚¹ã‚­ãƒ¼","åŸºæº–è¼åº¦",4096,"ã¼ã‹ã—",2048,"type",0);
+		obj.effect("å˜è‰²åŒ–","color",color_l,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
 		obj.draw(0,0,0,1,alpha_l);
 	end
 end
@@ -1203,7 +1203,7 @@ local function neumorphism(size, blur, color_l,alpha_l, color_d,alpha_d, angle)
 	if size == 0 or (alpha_l <= 0 and alpha_d <= 0) then
 		if size > 0 then
 			local sz = size+blur;
-			obj.effect("—ÌˆæŠg’£","¶",sz,"‰E",sz,"ã",sz,"‰º",sz);
+			obj.effect("é ˜åŸŸæ‹¡å¼µ","å·¦",sz,"å³",sz,"ä¸Š",sz,"ä¸‹",sz);
 		end
 		return;
 	end
@@ -1218,19 +1218,19 @@ local function neumorphism(size, blur, color_l,alpha_l, color_d,alpha_d, angle)
 		obj.copybuffer("obj","cache:obj");
 	end
 
-	obj.effect("—ÌˆæŠg’£","¶",size,"‰E",size,"ã",size,"‰º",size);
-	obj.effect("’PF‰»","color",0x808080,"‹P“x‚ğ•Û‚·‚é",0);
-	obj.effect("“ÊƒGƒbƒW","•",size,"Šp“x",angle);
+	obj.effect("é ˜åŸŸæ‹¡å¼µ","å·¦",size,"å³",size,"ä¸Š",size,"ä¸‹",size);
+	obj.effect("å˜è‰²åŒ–","color",0x808080,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
+	obj.effect("å‡¸ã‚¨ãƒƒã‚¸","å¹…",size,"è§’åº¦",angle);
 	slib.force_opaque();
 
 	if blur>0 then
 		if convex then
-			obj.effect("—ÌˆæŠg’£","¶",blur,"‰E",blur,"ã",blur,"‰º",blur,"“h‚è‚Â‚Ô‚µ",1);
+			obj.effect("é ˜åŸŸæ‹¡å¼µ","å·¦",blur,"å³",blur,"ä¸Š",blur,"ä¸‹",blur,"å¡—ã‚Šã¤ã¶ã—",1);
 		end
-		obj.effect("‚Ú‚©‚µ","”ÍˆÍ",blur,"ƒTƒCƒYŒÅ’è",1);
+		obj.effect("ã¼ã‹ã—","ç¯„å›²",blur,"ã‚µã‚¤ã‚ºå›ºå®š",1);
 	end
 	if not convex then
-		obj.effect("ƒNƒŠƒbƒsƒ“ƒO","¶",size,"‰E",size,"ã",size,"‰º",size);
+		obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","å·¦",size,"å³",size,"ä¸Š",size,"ä¸‹",size);
 	end
 
 	obj.setoption("dst","tmp");
@@ -1249,11 +1249,11 @@ local function neumorphism(size, blur, color_l,alpha_l, color_d,alpha_d, angle)
 	obj.copybuffer("obj","tmp");
 end
 local function call_neumorphism(size, blur, intensity, balance, color_l, color_d, angle)
-	--track0:•,-100,100,30,1
-	--track1:‚Ú‚©‚µ”ä,0,500,50
-	--track2:‹­‚³,0,100,50
-	--track3:ƒoƒ‰ƒ“ƒX,-100,100,0
-	--dialog:ŒõF/col,_1=0xffffff;‰eF/col,_2=0x000000;ŒõŠp“x,_3=-45;TRACK,_0=nil;
+	--track0:å¹…,-100,100,30,1
+	--track1:ã¼ã‹ã—æ¯”,0,500,50
+	--track2:å¼·ã•,0,100,50
+	--track3:ãƒãƒ©ãƒ³ã‚¹,-100,100,0
+	--dialog:å…‰è‰²/col,_1=0xffffff;å½±è‰²/col,_2=0x000000;å…‰è§’åº¦,_3=-45;TRACK,_0=nil;
 	size = slib.coerce_int(size,30,-100,100); if size == 0 then return end
 	blur = slib.coerce_real(blur,0.5, 0,5);
 	intensity = slib.coerce_real(intensity,0.5, 0,1);

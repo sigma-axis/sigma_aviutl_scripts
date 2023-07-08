@@ -179,10 +179,10 @@ local function find_midpoint_section(time)
 	return m, (time-s)/t, N,t;
 end
 
-local function invert_transparency() return obj.effect("”½“]","“§–¾“x”½“]",1) end
+local function invert_transparency() return obj.effect("åè»¢","é€æ˜åº¦åè»¢",1) end
 local function force_transparent()
 	local _,h = obj.getpixel();
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","’†SY",-h/2-2);
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸­å¿ƒY",-h/2-2);
 end
 local function force_opaque()
 	force_transparent();
@@ -249,7 +249,7 @@ else
 end
 
 local function angle_cut_x(center_x,angle)
-	return obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","‚Ú‚©‚µ",0,"’†SX",center_x,"Šp“x",angle);
+	return obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ã¼ã‹ã—",0,"ä¸­å¿ƒX",center_x,"è§’åº¦",angle);
 end
 local function diamond_cut_x(w2,angle)
 	angle_cut_x(-w2, angle);
@@ -258,7 +258,7 @@ local function diamond_cut_x(w2,angle)
 	angle_cut_x( w2, angle-180);
 end
 local function angle_cut_y(center_y,angle)
-	return obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","‚Ú‚©‚µ",0,"’†SY",center_y,"Šp“x",angle);
+	return obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ã¼ã‹ã—",0,"ä¸­å¿ƒY",center_y,"è§’åº¦",angle);
 end
 local function diamond_cut_y(h2,angle)
 	angle_cut_y(-h2, angle-180);
@@ -285,10 +285,10 @@ local function load_diamond_core(color,width,height,thick, back_color, back_alph
 	end
 	if frm_mode == 0 or back_alpha <= 0 then back_color = color end
 
-	if width == height then obj.load("figure","lŠpŒ`", back_color,width);
+	if width == height then obj.load("figure","å››è§’å½¢", back_color,width);
 	else
-		obj.load("figure","lŠpŒ`",back_color,1);
-		obj.effect("ƒŠƒTƒCƒY","X",width,"Y",height,"ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1);
+		obj.load("figure","å››è§’å½¢",back_color,1);
+		obj.effect("ãƒªã‚µã‚¤ã‚º","X",width,"Y",height,"ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1);
 	end
 
 	local w,h = obj.getpixel();
@@ -305,7 +305,7 @@ local function load_diamond_core(color,width,height,thick, back_color, back_alph
 			obj.draw(0,0,0, 1,back_alpha);
 			invert_transparency();
 			if color ~= back_color then
-				obj.effect("’PF‰»","color",color,"‹P“x‚ğ•Û‚·‚é",0);
+				obj.effect("å˜è‰²åŒ–","color",color,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
 			end
 			obj.setoption("blend","alpha_add");
 			obj.draw();
@@ -404,7 +404,7 @@ local function round_corners_precise(cachename, radiusTL,radiusTR,radiusBR,radiu
 	local w2,h2 = width/2,height/2;
 
 	obj.setoption("dst","tmp",width,height);
-	obj.load("figure","lŠpŒ`",0,1);
+	obj.load("figure","å››è§’å½¢",0,1);
 	obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0)
 	round_corners_simple(radiusTL,radiusTR,radiusBR,radiusBL, figure,invert,true,width,height);
 
@@ -443,7 +443,7 @@ local function round_corners(cachename, radiusTL,radiusTR,radiusBR,radiusBL, fig
 	radiusTL,radiusTR,radiusBR,radiusBL = corner_radius_resize(
 		radiusTL,radiusTR,radiusBR,radiusBL, width, height);
 	if radiusTL > 0 or radiusTR > 0 or radiusBR > 0 or radiusBL > 0 then
-		if type(figure) ~= "string" then figure = "‰~" end
+		if type(figure) ~= "string" then figure = "å††" end
 		if simple then
 			round_corners_simple(radiusTL,radiusTR,radiusBR,radiusBL, figure,invert, tempbuffer,width,height);
 		else
@@ -453,8 +453,8 @@ local function round_corners(cachename, radiusTL,radiusTR,radiusBR,radiusBL, fig
 end
 
 local function round_rect_fill(width,height, color, radiusTL, radiusTR, radiusBR, radiusBL, figure,invert)
-	obj.load("figure","lŠpŒ`",color,1);
-	obj.effect("ƒŠƒTƒCƒY","X",width,"Y",height,"ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1);
+	obj.load("figure","å››è§’å½¢",color,1);
+	obj.effect("ãƒªã‚µã‚¤ã‚º","X",width,"Y",height,"ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1);
 	if radiusTL > 0 or radiusTR > 0 or radiusBR > 0 or radiusBL > 0 then
 		obj.copybuffer("tmp","obj");
 		obj.setoption("dst","tmp");
@@ -466,7 +466,7 @@ end
 local function nonround_rect_frame(width, height, color,back_color,back_alpha, thick)
 	local w2,h2 = width/2,height/2;
 	obj.setoption("dst","tmp",width,height);
-	obj.load("figure","lŠpŒ`",color,1);
+	obj.load("figure","å››è§’å½¢",color,1);
 	obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0);
 
 	obj.setoption("blend","alpha_sub");
@@ -477,7 +477,7 @@ local function nonround_rect_frame(width, height, color,back_color,back_alpha, t
 		obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0);
 
 		if back_alpha > 0 then
-			obj.load("figure","lŠpŒ`",back_color,1);
+			obj.load("figure","å››è§’å½¢",back_color,1);
 			obj.setoption("blend","alpha_add");
 			obj.drawpoly(-w2,-h2,0, w2,-h2,0, w2,h2,0, -w2,h2,0, 0,0, 0,0, 0,0, 0,0, back_alpha);
 		end
@@ -562,7 +562,7 @@ local function round_rect_frame_in(width, height, color,back_color,back_alpha, t
 			obj.copybuffer("obj","tmp");
 			invert_transparency();
 			if back_color ~= color then
-				obj.effect("’PF‰»","color",back_color,"‹P“x‚ğ•Û‚·‚é",0);
+				obj.effect("å˜è‰²åŒ–","color",back_color,"è¼åº¦ã‚’ä¿æŒã™ã‚‹",0);
 			end
 			obj.setoption("blend","alpha_add");
 			obj.draw(0,0,0, 1,back_alpha);
@@ -598,13 +598,13 @@ end
 
 local ratio_rad_thick_list = {
 	[""] = 2^0.5,
-	["”wŒi"] = 1,
-	["‰~"] = 1,
-	["lŠpŒ`"] = 1,
-	["OŠpŒ`"] = 2,
-	["ŒÜŠpŒ`"] = 1/math.cos(math.pi/5),
-	["˜ZŠpŒ`"] = 1/math.cos(math.pi/6),
-	["¯Œ^"] = 1/math.cos(2/5*math.pi),
+	["èƒŒæ™¯"] = 1,
+	["å††"] = 1,
+	["å››è§’å½¢"] = 1,
+	["ä¸‰è§’å½¢"] = 2,
+	["äº”è§’å½¢"] = 1/math.cos(math.pi/5),
+	["å…­è§’å½¢"] = 1/math.cos(math.pi/6),
+	["æ˜Ÿå‹"] = 1/math.cos(2/5*math.pi),
 };
 local function round_rect(color, width, height, thick,
 	radiusTL, radiusTR, radiusBR, radiusBL, figure,invert,ratio_rad_thick,flipcenter,extrapolate,
@@ -619,7 +619,7 @@ local function round_rect(color, width, height, thick,
 	radiusBL = coerce_int(radiusBL,-1); if radiusBL < 0 then radiusBL = radiusTL end
 	radiusTL,radiusTR,radiusBR,radiusBL = corner_radius_resize(
 		radiusTL,radiusTR,radiusBR,radiusBL, width,height);
-	if type(figure) ~= "string" then figure = "‰~" end
+	if type(figure) ~= "string" then figure = "å††" end
 	invert = invert == true;
 	load = load == nil or load == true;
 
@@ -746,7 +746,7 @@ local function fill_back(color,alpha,alpha_f,load)
 		obj.setoption("dst","tmp");
 	end
 	invert_transparency();
-	obj.effect("’PF‰»", "‹P“x‚ğ•Û‚·‚é",0, "color",color);
+	obj.effect("å˜è‰²åŒ–", "è¼åº¦ã‚’ä¿æŒã™ã‚‹",0, "color",color);
 	obj.setoption("blend","alpha_add");
 	obj.draw(0,0,0,1,alpha);
 	obj.setoption("blend",0);
@@ -761,8 +761,8 @@ local function pizza_cut_sharp(a_from, a_to, cx,cy)
 		obj.setoption("dst","tmp");
 	end
 
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","’†SX",cx,"’†SY",cy,"‚Ú‚©‚µ",0,"Šp“x",a_from-90);
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","’†SX",cx,"’†SY",cy,"‚Ú‚©‚µ",0,"Šp“x",a_to+90);
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸­å¿ƒX",cx,"ä¸­å¿ƒY",cy,"ã¼ã‹ã—",0,"è§’åº¦",a_from-90);
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸­å¿ƒX",cx,"ä¸­å¿ƒY",cy,"ã¼ã‹ã—",0,"è§’åº¦",a_to+90);
 
 	if invert then
 		obj.setoption("blend","alpha_sub");
@@ -777,8 +777,8 @@ local function pizza_cut_blunt(a_from, a_to, cx,cy, blur, cachename)
 
 	local posinfo = posinfo_save();
 
-	obj.load("figure","lŠpŒ`",0,1);
-	obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1,
+	obj.load("figure","å››è§’å½¢",0,1);
+	obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1,
 		"X",math.min(math.max(math.ceil(math.pi*r/4)*4-96,360),(obj.getinfo("image_max"))),"Y",96);
 
 	local a_after,flip = (a_from+a_to)/2,false;
@@ -793,12 +793,12 @@ local function pizza_cut_blunt(a_from, a_to, cx,cy, blur, cachename)
 		a_after,flip = a_after-180,true;
 	end
 	local l = obj.getpixel()/360;
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","Šp“x",-90,"’†SX",-a_from*l, "‚Ú‚©‚µ",blur*l);
-	obj.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","Šp“x",90,"’†SX",-a_to*l, "‚Ú‚©‚µ",blur*l);
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","è§’åº¦",-90,"ä¸­å¿ƒX",-a_from*l, "ã¼ã‹ã—",blur*l);
+	obj.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","è§’åº¦",90,"ä¸­å¿ƒX",-a_to*l, "ã¼ã‹ã—",blur*l);
 	if flip == (not cachename) then invert_transparency() end
 
-	obj.effect("‹ÉÀ•W•ÏŠ·","‰ñ“]",a_after+180,
-		"Šg‘å—¦",math.ceil(100*math.max(math.pi*r/(360*l+96),1)));
+	obj.effect("æ¥µåº§æ¨™å¤‰æ›","å›è»¢",a_after+180,
+		"æ‹¡å¤§ç‡",math.ceil(100*math.max(math.pi*r/(360*l+96),1)));
 
 	l = obj.getpixel()/2; -- polar transform always yields the dimension of even size.
 	obj.setoption("dst","tmp");

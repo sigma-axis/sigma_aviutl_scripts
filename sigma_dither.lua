@@ -23,7 +23,7 @@ SOFTWARE.
 https://mit-license.org/
 ]]
 
--- -- ƒfƒBƒUƒŠƒ“ƒO‚Ìƒ‰ƒ“ƒ_ƒ€ƒpƒ^[ƒ“‚ÌŒÅ’è—”ƒV[ƒhD‰Â”\‚È”ÍˆÍ‚Í 0 ` 2^31-1.
+-- -- ãƒ‡ã‚£ã‚¶ãƒªãƒ³ã‚°ã®ãƒ©ãƒ³ãƒ€ãƒ ãƒ‘ã‚¿ãƒ¼ãƒ³ã®å›ºå®šä¹±æ•°ã‚·ãƒ¼ãƒ‰ï¼å¯èƒ½ãªç¯„å›²ã¯ 0 ã€œ 2^31-1.
 -- local dither_pattern_random_seed = 37564;
 
 local math = math;
@@ -34,11 +34,11 @@ local ffi do
 	if not c then
 		c = ffi; ffi = nil;
 		debug_print(c);
-		debug_print("ffiƒ‰ƒCƒuƒ‰ƒŠ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½DLuaJIT‚Ì“±“ü‚ğ„§‚µ‚Ü‚·D");
+		debug_print("ffiãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸï¼LuaJITã®å°å…¥ã‚’æ¨å¥¨ã—ã¾ã™ï¼");
 
 		local function ffi_absent()
 			obj.setfont("ms ui gothic",34,3,0xffffff,0);
-			obj.load("text", [[‚±‚Ì‹@”\‚ğ—˜—p‚·‚é‚É‚Í LuaJIT ‚ª•K—v‚Å‚·D]]);
+			obj.load("text", [[ã“ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹ã«ã¯ LuaJIT ãŒå¿…è¦ã§ã™ï¼]]);
 		end
 		return setmetatable({},{__index=function(_,_)return ffi_absent end});
 	end
@@ -52,7 +52,7 @@ else
 		= AND, OR, function(n) return -1-n end, XOR, SHIFT;
 	rshift = function(n,b) return lshift(n%2^32,-b) end
 end
-local function invert_opacity() return obj.effect("”½“]","“§–¾“x”½“]",1) end
+local function invert_opacity() return obj.effect("åè»¢","é€æ˜åº¦åè»¢",1) end
 
 -- array to tables { size = size, load = function([threshold,invert,cont], seed) } where
 -- size is the width and the height of the image of the unit of the pattern,
@@ -65,7 +65,7 @@ local dither_patterns do
 	local function buffer_dest()
 		local w,h = obj.getpixel();
 		if w ~= MAX_SIZE_DITHER_PATTERN or h ~= MAX_SIZE_DITHER_PATTERN then
-			obj.load("figure","lŠpŒ`",0,MAX_SIZE_DITHER_PATTERN);
+			obj.load("figure","å››è§’å½¢",0,MAX_SIZE_DITHER_PATTERN);
 		end
 		local buffer = obj.getpixeldata("alloc","work");
 		buffer_dest = function() return buffer end;
@@ -110,7 +110,7 @@ local dither_patterns do
 			for i=0,size*size-1 do ptr[4*i+3] = map[buffer[i]] end
 
 			local w,h = obj.getpixel();
-			if w ~= size or h ~= size then obj.load("figure","lŠpŒ`",0,size) end
+			if w ~= size or h ~= size then obj.load("figure","å››è§’å½¢",0,size) end
 			obj.putpixeldata(buffer_dest());
 		end
 	end
@@ -235,7 +235,7 @@ local dither_patterns do
 				equalize_alpha(checker_pattern());
 
 				local w,h = obj.getpixel();
-				if w ~= 16 or h ~= 16 then obj.load("figure","lŠpŒ`",0,16) end
+				if w ~= 16 or h ~= 16 then obj.load("figure","å››è§’å½¢",0,16) end
 				obj.putpixeldata(buffer_dest());
 			else
 				bias_and_load(checker_pattern(),16, equalize_threshold(threshold), invert, 16, cont);
@@ -307,7 +307,7 @@ local dither_patterns do
 end
 local function image_loop(n_h,n_v)
 	if n_h < 400 and n_v < 400 then
-		obj.effect("‰æ‘œƒ‹[ƒv", "‰¡‰ñ”",n_h, "c‰ñ”",n_v);
+		obj.effect("ç”»åƒãƒ«ãƒ¼ãƒ—", "æ¨ªå›æ•°",n_h, "ç¸¦å›æ•°",n_v);
 		return;
 	end
 
@@ -318,7 +318,7 @@ local function image_loop(n_h,n_v)
 	local n3_h,n3_v = math.ceil(n_h/n2_h),math.ceil(n_v/n2_v);
 	image_loop(n3_h, n3_v);
 
-	obj.effect("ƒNƒŠƒbƒsƒ“ƒO","‰E",w*(n2_h*n3_h-n_h),"‰º",h*(n2_v*n3_v-n_v));
+	obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","å³",w*(n2_h*n3_h-n_h),"ä¸‹",h*(n2_v*n3_v-n_v));
 end
 
 local function dither_mask(pattern, seed, continuous, intensity, invert,
@@ -335,7 +335,7 @@ local function dither_mask(pattern, seed, continuous, intensity, invert,
 		local szx,szy = slib.size_aspect_to_len(size,aspect);
 		szx,szy = math.max(1,math.floor(0.5+szx)),math.max(1,math.floor(0.5+szy));
 		W,H = W*szx,H*szy;
-		obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1, "X",W, "Y",H);
+		obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1, "X",W, "Y",H);
 	end
 
 	-- multiply the pattern to span the entire original image
@@ -369,12 +369,12 @@ local function dither_mask(pattern, seed, continuous, intensity, invert,
 end
 local function call_mask(pattern, seed, continuous, intensity, invert,
 	size, aspect, offset_x, offset_y, offset_abs)
-	--track0:‹­‚³,0,100,0
-	--track1:ƒTƒCƒY,1,200,3,1
-	--track2:X‚¸‚ê,-1600,1600,0,1
-	--track3:Y‚¸‚ê,-1600,1600,0,1
-	--check0:ˆÊ’u’²®‚ğ‰æ–ÊŠî€‚É,0
-	--dialog:ƒpƒ^[ƒ“ (1`7),_1=4;„¤(7)‚ÌƒV[ƒh,_2=123;”¼“§–¾‚ğ‹–‰Â/chk,_3=0;c‰¡”ä,_4=0;”½“]/chk,_5=0;TRACK,_0=nil;
+	--track0:å¼·ã•,0,100,0
+	--track1:ã‚µã‚¤ã‚º,1,200,3,1
+	--track2:Xãšã‚Œ,-1600,1600,0,1
+	--track3:Yãšã‚Œ,-1600,1600,0,1
+	--check0:ä½ç½®èª¿æ•´ã‚’ç”»é¢åŸºæº–ã«,0
+	--dialog:ãƒ‘ã‚¿ãƒ¼ãƒ³ (1ã€œ7),_1=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_2=123;åŠé€æ˜ã‚’è¨±å¯/chk,_3=0;ç¸¦æ¨ªæ¯”,_4=0;åè»¢/chk,_5=0;TRACK,_0=nil;
 	pattern = slib.coerce_int(pattern, 3, 1,#dither_patterns);
 	seed = slib.coerce_int(seed,123, -0x80000000,0x7fffffff);
 	intensity = slib.coerce_real(intensity,0, 0,1);
@@ -394,12 +394,12 @@ end
 
 local function call_fade(in_time, out_time, pattern,seed, continuous, invert,
 	size, aspect, offset_x, offset_y, offset_abs)
-	--track0:ƒCƒ“,0,10,0.50,0.01
-	--track1:ƒAƒEƒg,0,10,0.50,0.01
-	--track2:ƒTƒCƒY,1,200,3,1
-	--track3:c‰¡”ä,-100,100,0,0.01
-	--check0:ˆÊ’u’²®‚ğ‰æ–ÊŠî€‚É,0
-	--dialog:ƒpƒ^[ƒ“ (1`7),_1=4;„¤(7)‚ÌƒV[ƒh,_2=123;X‚¸‚ê,_3=0;Y‚¸‚ê,_4=0;”¼“§–¾‚ğ‹–‰Â/chk,_5=0;”½“]/chk,_6=0;TRACK,_0=nil;
+	--track0:ã‚¤ãƒ³,0,10,0.50,0.01
+	--track1:ã‚¢ã‚¦ãƒˆ,0,10,0.50,0.01
+	--track2:ã‚µã‚¤ã‚º,1,200,3,1
+	--track3:ç¸¦æ¨ªæ¯”,-100,100,0,0.01
+	--check0:ä½ç½®èª¿æ•´ã‚’ç”»é¢åŸºæº–ã«,0
+	--dialog:ãƒ‘ã‚¿ãƒ¼ãƒ³ (1ã€œ7),_1=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_2=123;Xãšã‚Œ,_3=0;Yãšã‚Œ,_4=0;åŠé€æ˜ã‚’è¨±å¯/chk,_5=0;åè»¢/chk,_6=0;TRACK,_0=nil;
 	in_time = slib.coerce_real(in_time,0.5, 0,10);
 	out_time = slib.coerce_real(out_time,0.5, 0,10);
 	pattern = slib.coerce_int(pattern, 3, 1,#dither_patterns);
@@ -447,9 +447,9 @@ local function mosaic_preprocess(pattern_size, mosaic,interpolate, size,aspect, 
 	if mosaic and size > 1 then
 		ex_l,ex_r,ex_t,ex_b = (-w2-l)%size_h,(r-w+w2)%size_h,(-h2-t)%size_v,(b-h+h2)%size_v;
 		if ex_l > 0 or ex_r > 0 or ex_t > 0 or ex_b > 0 then
-			obj.effect("—ÌˆæŠg’£","ã",ex_t,"‰º",ex_b,"¶",ex_l,"‰E",ex_r,"“h‚è‚Â‚Ô‚µ",1);
+			obj.effect("é ˜åŸŸæ‹¡å¼µ","ä¸Š",ex_t,"ä¸‹",ex_b,"å·¦",ex_l,"å³",ex_r,"å¡—ã‚Šã¤ã¶ã—",1);
 		end
-		obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1, "•âŠÔ‚È‚µ",interpolate and 0 or 1,
+		obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1, "è£œé–“ãªã—",interpolate and 0 or 1,
 			"X",(w+ex_l+ex_r)/size_h, "Y",(h+ex_t+ex_b)/size_v);
 		offset_x = (offset_x+(ex_l-ex_r)/2)/size_h;
 		offset_y = (offset_y+(ex_t-ex_b)/2)/size_v;
@@ -461,10 +461,10 @@ local function mosaic_postprocess(mosaic, interpolate, size_h,size_v, ex_l,ex_r,
 	if not mosaic or (size_h <= 1 and size_v <= 1) then return end
 
 	local w,h = obj.getpixel();
-	obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1, "•âŠÔ‚È‚µ",interpolate and 0 or 1,
+	obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1, "è£œé–“ãªã—",interpolate and 0 or 1,
 		"X",w*size_h, "Y",h*size_v);
 	if ex_l > 0 or ex_r > 0 or ex_t > 0 or ex_b > 0 then
-		obj.effect("ƒNƒŠƒbƒsƒ“ƒO","ã",ex_t,"‰º",ex_b,"¶",ex_l,"‰E",ex_r);
+		obj.effect("ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","ä¸Š",ex_t,"ä¸‹",ex_b,"å·¦",ex_l,"å³",ex_r);
 	end
 end
 local dither_decay_color do
@@ -516,12 +516,12 @@ local dither_decay_color do
 			if bits_r >= 8 then mask_low = mask_low - 0x010000 end
 			if bits_g >= 8 then mask_low = mask_low - 0x000100 end
 			if bits_b >= 8 then mask_low = mask_low - 0x000001 end
-			obj.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",mask_low);
+			obj.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",mask_low);
 			local w,h = obj.getpixel();
 			if pattern > 0 then
 				if not mosaic and (size_h > 1 or size_v > 1) then
 					w,h = w*size_h,h*size_v;
-					obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1, "X",w, "Y",h);
+					obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1, "X",w, "Y",h);
 				end
 
 				image_loop(loop_h,loop_v);
@@ -563,12 +563,12 @@ local dither_decay_color do
 end
 local function call_decay_color(bits_r,bits_g,bits_b, pattern,seed,not_opaque,
 	size,aspect,mosaic, average,bilinear, offset_x,offset_y,offset_abs)
-	--track0:RŒ¸F,0,8,0,1
-	--track1:GŒ¸F,0,8,0,1
-	--track2:BŒ¸F,0,8,0,1
-	--track3:ƒTƒCƒY,1,200,1,1
-	--check0:ƒTƒCƒY‚É‰‚¶‚Ä‰ğ‘œ“x‚ğ—‚Æ‚·,1
-	--dialog:ƒpƒ^[ƒ“ (0`7),_1=4;„¤(7)‚ÌƒV[ƒh,_2=123;c‰¡”ä,_3=0;X‚¸‚ê,_4=0;Y‚¸‚ê,_5=0;‚¸‚ê‰æ–ÊŠî€/chk,_6=0;k¬•âŠÔ/chk,_7=1;Šg‘å•âŠÔ/chk,_8=0;”¼“§–¾‚É”z—¶/chk,_9=0;TRACK,_0=nil;
+	--track0:Ræ¸›è‰²,0,8,0,1
+	--track1:Gæ¸›è‰²,0,8,0,1
+	--track2:Bæ¸›è‰²,0,8,0,1
+	--track3:ã‚µã‚¤ã‚º,1,200,1,1
+	--check0:ã‚µã‚¤ã‚ºã«å¿œã˜ã¦è§£åƒåº¦ã‚’è½ã¨ã™,1
+	--dialog:ãƒ‘ã‚¿ãƒ¼ãƒ³ (0ã€œ7),_1=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_2=123;ç¸¦æ¨ªæ¯”,_3=0;Xãšã‚Œ,_4=0;Yãšã‚Œ,_5=0;ãšã‚Œç”»é¢åŸºæº–/chk,_6=0;ç¸®å°è£œé–“/chk,_7=1;æ‹¡å¤§è£œé–“/chk,_8=0;åŠé€æ˜ã«é…æ…®/chk,_9=0;TRACK,_0=nil;
 	bits_r = slib.coerce_int(bits_r,0, 0,8);
 	bits_g = slib.coerce_int(bits_g,0, 0,8);
 	bits_b = slib.coerce_int(bits_b,0, 0,8);
@@ -629,7 +629,7 @@ local dither_decay_alpha do
 				w,h = obj.getpixel()
 				if not mosaic and (size_h > 1 or size_v > 1) then
 					w,h = w*size_h,h*size_v;
-					obj.effect("ƒŠƒTƒCƒY","ƒhƒbƒg”‚ÅƒTƒCƒYw’è",1,"•âŠÔ‚È‚µ",1, "X",w, "Y",h);
+					obj.effect("ãƒªã‚µã‚¤ã‚º","ãƒ‰ãƒƒãƒˆæ•°ã§ã‚µã‚¤ã‚ºæŒ‡å®š",1,"è£œé–“ãªã—",1, "X",w, "Y",h);
 				end
 
 				image_loop(loop_h,loop_v);
@@ -674,12 +674,12 @@ local dither_decay_alpha do
 end
 local function call_decay_alpha(prec_a, invert, pattern,seed,
 	size,aspect,mosaic,mosaic_color, offset_x,offset_y,offset_abs)
-	--track0:ƒrƒbƒgŒ¸,0,8,0,1
-	--track1:ƒTƒCƒY,1,200,1,1
-	--track2:X‚¸‚ê,-1600,1600,0,1
-	--track3:Y‚¸‚ê,-1600,1600,0,1
-	--check0:ƒTƒCƒY‚É‰‚¶‚Ä‰ğ‘œ“x‚ğ—‚Æ‚·,1
-	--dialog:ƒpƒ^[ƒ“ (0`7),_1=4;„¤(7)‚ÌƒV[ƒh,_2=123;c‰¡”ä,_3=0;”½“]/chk,_4=0;‚¸‚ê‰æ–ÊŠî€/chk,_5=0;k¬•âŠÔ/chk,_6=1;Šg‘å•âŠÔ/chk,_7=0;TRACK,_0=nil;
+	--track0:ãƒ“ãƒƒãƒˆæ¸›,0,8,0,1
+	--track1:ã‚µã‚¤ã‚º,1,200,1,1
+	--track2:Xãšã‚Œ,-1600,1600,0,1
+	--track3:Yãšã‚Œ,-1600,1600,0,1
+	--check0:ã‚µã‚¤ã‚ºã«å¿œã˜ã¦è§£åƒåº¦ã‚’è½ã¨ã™,1
+	--dialog:ãƒ‘ã‚¿ãƒ¼ãƒ³ (0ã€œ7),_1=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_2=123;ç¸¦æ¨ªæ¯”,_3=0;åè»¢/chk,_4=0;ãšã‚Œç”»é¢åŸºæº–/chk,_5=0;ç¸®å°è£œé–“/chk,_6=1;æ‹¡å¤§è£œé–“/chk,_7=0;TRACK,_0=nil;
 	prec_a = slib.coerce_int(prec_a,0, 0,30);
 	pattern = slib.coerce_int(pattern,3, 0,#dither_patterns);
 	seed = slib.coerce_int(seed,123, -0x80000000,0x7fffffff);

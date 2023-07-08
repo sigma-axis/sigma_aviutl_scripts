@@ -1,14 +1,14 @@
-@ƒfƒBƒUƒtƒF[ƒhƒAƒEƒgƒCƒ“
---track0:d•¡—¦,0,100,0
---track1:ƒTƒCƒY,1,200,3,1
---check0:”¼“§–¾‚ğ‹–‰Â,0
---dialog:”wŒiF/col,_1=0x000000;ƒhƒbƒgc‰¡”ä,_2=0;ƒpƒ^[ƒ“ (1`7),_3=4;„¤(7)‚ÌƒV[ƒh,_4=123;X‚¸‚ê,_5=0;Y‚¸‚ê,_6=0;TRACK,_0=nil;
+@ãƒ‡ã‚£ã‚¶ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚¤ãƒ³
+--track0:é‡è¤‡ç‡,0,100,0
+--track1:ã‚µã‚¤ã‚º,1,200,3,1
+--check0:åŠé€æ˜ã‚’è¨±å¯,0
+--dialog:èƒŒæ™¯è‰²/col,_1=0x000000;ãƒ‰ãƒƒãƒˆç¸¦æ¨ªæ¯”,_2=0;ãƒ‘ã‚¿ãƒ¼ãƒ³ (1ã€œ7),_3=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_4=123;Xãšã‚Œ,_5=0;Yãšã‚Œ,_6=0;TRACK,_0=nil;
 local o,slib,s_dither = obj,require"sigma_lib",require"sigma_dither";
 local col,asp,c0,t1,t2 = slib.coerce_color(_1,0),slib.coerce_real(_2,0, -100,100)/100,
 	slib.extract_trackvalues(_0);_0=nil;_1=nil;_2=nil;
 local T1,T2 = o.getvalue("scenechange"),1-t1/100;
 T1,T2 = (1+T2)*T1,(1+T2)*T1-T2;
-if T1>=1 then o.effect("’PF‰»","‹P“x‚ğ•Û‚·‚é",0,"color",col);
+if T1>=1 then o.effect("å˜è‰²åŒ–","è¼åº¦ã‚’ä¿æŒã™ã‚‹",0,"color",col);
 elseif T1>0 then
 	s_dither.mask(_3,_4,c0, T1,false, t2,asp, _5,_6, false);
 	if T2<T1 then slib.fill_back(col) end
@@ -19,42 +19,42 @@ o.setoption("dst","frm");
 o.draw();
 
 
-@ƒfƒBƒUƒƒCƒv(’¼ü)
---track0:Šp“x,-360,360,0
---track1:‚Ú‚©‚µ•,0,2000,300,1
---dialog:ƒhƒbƒgƒTƒCƒY,_1=3;ƒhƒbƒgc‰¡”ä,_2=0;ƒpƒ^[ƒ“ (0`7),_3=4;„¤(7)‚ÌƒV[ƒh,_4=123;ƒ¿¸“x(0~30),_5=0;X‚¸‚ê,_6=0;Y‚¸‚ê,_7=0;TRACK,_0=nil;
+@ãƒ‡ã‚£ã‚¶ãƒ¯ã‚¤ãƒ—(ç›´ç·š)
+--track0:è§’åº¦,-360,360,0
+--track1:ã¼ã‹ã—å¹…,0,2000,300,1
+--dialog:ãƒ‰ãƒƒãƒˆã‚µã‚¤ã‚º,_1=3;ãƒ‰ãƒƒãƒˆç¸¦æ¨ªæ¯”,_2=0;ãƒ‘ã‚¿ãƒ¼ãƒ³ (0ã€œ7),_3=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_4=123;Î±ç²¾åº¦(0~30),_5=0;Xãšã‚Œ,_6=0;Yãšã‚Œ,_7=0;TRACK,_0=nil;
 local o,n,c0,t1,t2 = obj,tonumber,require"sigma_lib".extract_trackvalues(_0);_0=nil;
 local T,math,cx,cy = o.getvalue("scenechange"),math,o.getpixel();
 t1=(t1+180)%360; if t1<180 then cx=-cx end; if 90<t1 and t1<270 then cy=-cy end;
 cx,cy = cx-t2*math.sin(t1*math.pi/180),cy+t2*math.cos(t1*math.pi/180);
-o.effect("Î‚ßƒNƒŠƒbƒsƒ“ƒO","Šp“x",t1,"‚Ú‚©‚µ",t2,"’†SX",(0.5-T)*cx,"’†SY",(0.5-T)*cy);
+o.effect("æ–œã‚ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°","è§’åº¦",t1,"ã¼ã‹ã—",t2,"ä¸­å¿ƒX",(0.5-T)*cx,"ä¸­å¿ƒY",(0.5-T)*cy);
 require"sigma_dither".decay_alpha(_5, false, _3,_4, _1,(n(_2)or 0)/100,true,false, _6,_7,false);
 _1=nil;_2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;
 o.setoption("dst","frm");
 o.draw();
 
 
-@ƒfƒBƒUƒƒCƒv(}Œ`)
---track0:‰ñ“],-360,360,0
---track1:‚Ú‚©‚µ•,0,2000,150,1
---dialog:}Œ`/fig,_1="‰~";‘å‚«‚³•â³,_2=1.00;ƒhƒbƒgƒTƒCƒY,_3=3;ƒhƒbƒgc‰¡”ä,_4=0;ƒpƒ^[ƒ“ (0`7),_5=4;„¤(7)‚ÌƒV[ƒh,_6=123;ƒ¿¸“x(0~30),_7=0;X‚¸‚ê,_8=0;Y‚¸‚ê,_9=0;TRACK,_0=nil;
+@ãƒ‡ã‚£ã‚¶ãƒ¯ã‚¤ãƒ—(å›³å½¢)
+--track0:å›è»¢,-360,360,0
+--track1:ã¼ã‹ã—å¹…,0,2000,150,1
+--dialog:å›³å½¢/fig,_1="å††";å¤§ãã•è£œæ­£,_2=1.00;ãƒ‰ãƒƒãƒˆã‚µã‚¤ã‚º,_3=3;ãƒ‰ãƒƒãƒˆç¸¦æ¨ªæ¯”,_4=0;ãƒ‘ã‚¿ãƒ¼ãƒ³ (0ã€œ7),_5=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_6=123;Î±ç²¾åº¦(0~30),_7=0;Xãšã‚Œ,_8=0;Yãšã‚Œ,_9=0;TRACK,_0=nil;
 local o,n,fig,c0,t1,t2 = obj,tonumber,tostring(_1),require"sigma_lib".extract_trackvalues(_0);_0=nil;_1=nil;
 local name_fig,id_fig = "",
-	({["”wŒi"]=0,["‰~"]=1,["lŠpŒ`"]=2,["OŠpŒ`"]=3,["ŒÜŠpŒ`"]=4,["˜ZŠpŒ`"]=5,["¯Œ^"]=6})[fig];
+	({["èƒŒæ™¯"]=0,["å††"]=1,["å››è§’å½¢"]=2,["ä¸‰è§’å½¢"]=3,["äº”è§’å½¢"]=4,["å…­è§’å½¢"]=5,["æ˜Ÿå‹"]=6})[fig];
 if not id_fig then name_fig,id_fig = fig,0 end
 local w,h = o.getpixel();
-o.effect("ƒ}ƒXƒN","ƒ}ƒXƒN‚Ì”½“]",1,"type",id_fig,"name",name_fig,"‰ñ“]",t1,"‚Ú‚©‚µ",t2,
-	"ƒTƒCƒY",((n(_2)or 1)*(w^2+h^2)^0.5+t2)*o.getvalue("scenechange"));
+o.effect("ãƒã‚¹ã‚¯","ãƒã‚¹ã‚¯ã®åè»¢",1,"type",id_fig,"name",name_fig,"å›è»¢",t1,"ã¼ã‹ã—",t2,
+	"ã‚µã‚¤ã‚º",((n(_2)or 1)*(w^2+h^2)^0.5+t2)*o.getvalue("scenechange"));
 require"sigma_dither".decay_alpha(_7, false, _5,_6, _3,(n(_4)or 0)/100,true,false, _8,_9,false);
 _2=nil;_3=nil;_4=nil;_5=nil;_6=nil;_7=nil;_8=nil;_9=nil;
 o.setoption("dst","frm");
 o.draw();
 
 
-@ƒfƒBƒUƒƒCƒv(Œv)
---track0:‰ŠúŠp,-360,360,0
---track1:‚Ú‚©‚µŠp,0,180,45,1
---dialog:ƒhƒbƒgƒTƒCƒY,_1=3;ƒhƒbƒgc‰¡”ä,_2=0;ƒpƒ^[ƒ“ (0`7),_3=4;„¤(7)‚ÌƒV[ƒh,_4=123;ƒ¿¸“x(0~30),_5=0;X‚¸‚ê,_6=0;Y‚¸‚ê,_7=0;TRACK,_0=nil;
+@ãƒ‡ã‚£ã‚¶ãƒ¯ã‚¤ãƒ—(æ™‚è¨ˆ)
+--track0:åˆæœŸè§’,-360,360,0
+--track1:ã¼ã‹ã—è§’,0,180,45,1
+--dialog:ãƒ‰ãƒƒãƒˆã‚µã‚¤ã‚º,_1=3;ãƒ‰ãƒƒãƒˆç¸¦æ¨ªæ¯”,_2=0;ãƒ‘ã‚¿ãƒ¼ãƒ³ (0ã€œ7),_3=4;â””(7)ã®ã‚·ãƒ¼ãƒ‰,_4=123;Î±ç²¾åº¦(0~30),_5=0;Xãšã‚Œ,_6=0;Yãšã‚Œ,_7=0;TRACK,_0=nil;
 local o,n,slib = obj,tonumber,require"sigma_lib";
 local c0,t1,t2 = slib.extract_trackvalues(_0);_0=nil;
 slib.pizza_cut(t1,t1-t2+(360+2*t2)*o.getvalue("scenechange"),0,0, t2,false);
