@@ -415,7 +415,10 @@ local function call_fade(in_time, out_time, pattern,seed, continuous, invert,
 		if T-t < out_time then opacity = math.min(opacity,(T-t+h)/(out_time+h)) end
 	end
 
-	if opacity >= 1 then return end
+	if opacity <= 0 or opacity >= 1 then
+		if opacity <= 0 then slib.force_transparent() end
+		return;
+	end
 	dither_mask(pattern, seed, continuous, invert and opacity or 1-opacity, invert,
 		size, aspect, offset_x, offset_y, offset_abs);
 end
